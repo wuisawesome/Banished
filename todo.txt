@@ -1,0 +1,36 @@
+TODO LIST - things to add to the game before the deadline (this Friday!)
+
+	Move from TO DO or TO FIX and into IN PROGRESS when working on a particular feature, along with your name. Move to COMPLETED when finished.
+
+
+
+TO DO:
+- Implement player attack animations
+- Player damage animations
+- Instructions screen from main menu
+- Stats screen
+
+
+TO FIX:
+- Entitiy-entity collision (dunno if fixed already, looks like it's kinda okay)
+- Opening cutscene
+- Sound doesn't work on jars
+- Slime collision shape looks funky
+
+
+IN PROGRESS:
+- More enemies (DarkSage)
+- Books (DarkSage)
+- Sounds and Music (DarkSage)
+- Save files (Jashaszun)
+- Final boss (DarkSage)
+- Chest inventories (feralin)
+- Add and implement items (armor, weapons, potions, etc) (Jashaszun)
+
+
+COMPLETED:
+- Level traversal
+- Game over screen
+- Player aoe attack
+- Player dash attack
+- Damage numbers
