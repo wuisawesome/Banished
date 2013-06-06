@@ -13,8 +13,8 @@ public abstract class EnemyEntity extends LivingEntity {
 	private double damageCounter;
 	private final double SIGHT_RANGE;
 	
-	private final double	FLASH_DURATION = 1.2,
-							KNOCKBACK_DURATION = 1.07;
+	private final double FLASH_DURATION = 1.2,
+						 KNOCKBACK_DURATION = 1.07;
 	
 	private double knockback;
 	
