@@ -3,6 +3,7 @@ package com.banished.core.items;
 import processing.core.PApplet;
 
 import com.banished.core.Location;
+import com.banished.exceptions.*;
 import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 
@@ -16,28 +17,28 @@ public class Item
 	private final String name;
 	private Object imageId;
 	
-	private boolean consumable;
-	
-	public Item(Item copy, int count)
+	public Item(Item copy, int count) throws InvalidItemTypeException,
+			InvalidItemCountException, InvalidMaxStackSizeException
 	{
-		this(copy.type, count, copy.maxStackSize, copy.name, copy.imageId, copy.consumable);
+		this(copy.type, count, copy.maxStackSize, copy.name, copy.imageId);
 	}
 	
-	public Item(int type, int count, int maxStackSize, String name, Object imageId, boolean consumable)
+	public Item(int type, int count, int maxStackSize, String name, Object imageId)
+			throws InvalidItemTypeException, InvalidItemCountException,
+				InvalidMaxStackSizeException
 	{
+		if (type < 0 || type >= Items.NumItems)
+			throw new InvalidItemTypeException(type);
 		if (maxStackSize < 0)
-			maxStackSize = 1;
-		if (count < 0)
-			count = 0;
-		else if (count > maxStackSize)
-			count = maxStackSize;
+			throw new InvalidMaxStackSizeException(maxStackSize);
+		if (count < 0 || count > maxStackSize)
+			throw new InvalidItemCountException(count, type, maxStackSize);
 		
 		this.type = type;
 		this.count = count;
 		this.maxStackSize = maxStackSize;
 		this.name = name;
 		this.imageId = imageId;
-		this.consumable = consumable;
 	}
 	
 	public int getType() { return this.type; }
@@ -46,12 +47,10 @@ public class Item
 	public Object getImageId() { return this.imageId; }
 	public String getName() { return this.name; }
 	
-	public void setCount(int count)
+	public void setCount(int count) throws InvalidItemCountException
 	{
-		if (count < 0)
-			count = 0;
-		else if (count > this.maxStackSize)
-			count = this.maxStackSize;
+		if (count < 0 || count > this.maxStackSize)
+			throw new InvalidItemCountException(count, this.type, this.maxStackSize);
 		this.count = count;
 	}
 	
@@ -88,7 +87,4 @@ public class Item
 		// TODO: implement();
 		return null;
 	}
-	
-	public void use() { }
-	public boolean isConsumable() { return this.consumable; }
 }

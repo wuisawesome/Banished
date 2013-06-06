@@ -10,12 +10,15 @@ import com.banished.graphics.Image;
 public class CursedManEntity extends EnemyEntity {
 	
 	private static final float IMG_W = 30, IMG_H = 58;
+	public static final double	SHAPE_YOFFSET = .13,
+			LOC_YOFFSET = .6,
+			RADIUS = .2;
 	
 	private static final double CURSEDMAN_MAX_HEALTH = 100;
 	private static final double CURSEDMAN_RANGE = .5;
 	private static final double CURSEDMAN_STRENGTH = 25;
 	private static final double CURSEDMAN_DEFENSE = 10;
-	private static final double CURSEDMAN_SPEED = 3.5;
+	private static final double CURSEDMAN_SPEED = 2;
 	private static final double CURSEDMAN_SIGHT_RANGE = 4.5;
 	private static final double CURSEDMAN_TIME_TO_ATTACK = .3;
 	private static final double CURSEDMAN_STABILITY = 0.5;
@@ -26,7 +29,7 @@ public class CursedManEntity extends EnemyEntity {
 	
 	public CursedManEntity(Location location, World world)
 	{
-		super(location, world, IMG_W/Tile.SIZE, IMG_H/Tile.SIZE, 0, IMG_H/Tile.SIZE/2, IMG_W/Tile.SIZE/2, CURSEDMAN_MAX_HEALTH, 
+		super(location, world, IMG_W/Tile.SIZE, IMG_H/Tile.SIZE, SHAPE_YOFFSET, LOC_YOFFSET, RADIUS, CURSEDMAN_MAX_HEALTH, 
 				CURSEDMAN_STRENGTH, CURSEDMAN_DEFENSE, CURSEDMAN_SPEED, CURSEDMAN_RANGE, CURSEDMAN_TIME_TO_ATTACK, CURSEDMAN_SIGHT_RANGE, CURSEDMAN_EXP, 3, 50);
 		
 		images = new EntityImageSet(new Image[]

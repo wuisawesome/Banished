@@ -1,6 +1,7 @@
 package com.banished.core;
 
 import com.banished.core.entities.Player;
+import com.banished.exceptions.InvalidTileTypeException;
 import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 import java.io.*;
@@ -243,10 +244,17 @@ public class TileGrid
 	}
 	public void calculateWalls(Coordinate topLeft, Coordinate bottomRight)
 	{
-		for (int x = topLeft.getX(); x <= bottomRight.getX(); x++)
-			for (int y = topLeft.getY(); y <= bottomRight.getY(); y++)
-				if (!isFloor(x, y))
-					setTile(x, y, new Tile(WallTypeCalculator.getWallType(this, x, y), new Coordinate(x, y)));
+		try
+		{
+			for (int x = topLeft.getX(); x <= bottomRight.getX(); x++)
+				for (int y = topLeft.getY(); y <= bottomRight.getY(); y++)
+					if (!isFloor(x, y))
+						setTile(x, y, new Tile(WallTypeCalculator.getWallType(this, x, y), new Coordinate(x, y)));
+		}
+		catch (InvalidTileTypeException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	private static class LevelReader
@@ -347,7 +355,8 @@ public class TileGrid
 					String tileStr = findNextTile(lines[y + 1]);
 					lines[y + 1] = lines[y + 1].substring(tileStr.length());
 					
-					grid.setTile(x, y, new Tile(stringToTile(tileStr), new Coordinate(x, y)));
+					try { grid.setTile(x, y, new Tile(stringToTile(tileStr), new Coordinate(x, y))); }
+					catch (InvalidTileTypeException e) { e.printStackTrace(); }
 				}
 			}
 			
