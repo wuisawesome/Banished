@@ -1,0 +1,8 @@
+Banished:
+
+Movement: move with the arrow keys.
+Attacks:
+  A: area of effect; a lot of damage in a medium-sized area; takes a lot of stamina.
+  S: standard slash attack; moderate damage in the direction you are facing.
+  D: dash attack; a lot of damage in a straight line in front of you; takes a medium amount of stamina.
+Enemies: kill all of them!

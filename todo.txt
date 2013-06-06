@@ -7,6 +7,7 @@ TODO LIST - things to add to the game before the deadline (this Friday!)
 TO DO:
 - Implement player attack animations
 - Player damage animations
+- Add and implement items (armor, weapons, potions, etc)
 - Instructions screen from main menu
 - Stats screen
 
@@ -25,7 +26,6 @@ IN PROGRESS:
 - Save files (Jashaszun)
 - Final boss (DarkSage)
 - Chest inventories (feralin)
-- Add and implement items (armor, weapons, potions, etc) (Jashaszun)
 
 
 COMPLETED:

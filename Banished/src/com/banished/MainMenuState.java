@@ -12,7 +12,7 @@ import com.banished.input.Key;
 
 public class MainMenuState extends State
 {
-	Button playButton, quitButton;
+	Button playButton, helpButton, quitButton;
 	private static class PlayButtonCallback implements ButtonCallback
 	{
 		private MainMenuState mainMenu;
@@ -25,16 +25,24 @@ public class MainMenuState extends State
 		public QuitButtonCallback(MainMenuState mainMenu) { this.mainMenu = mainMenu; }
 		public void onClicked(Button sender) { mainMenu.quitButtonPressed(); }
 	}
+	private static class HelpButtonCallback implements ButtonCallback
+	{
+		private MainMenuState mainMenu;
+		public HelpButtonCallback(MainMenuState mainMenu) { this.mainMenu = mainMenu; }
+		public void onClicked(Button sender) { mainMenu.helpButtonPressed(); }
+	}
 
 	public MainMenuState()
 	{
-		playButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 - 60), false, new PlayButtonCallback(this), "Play");
-		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 60), false, new QuitButtonCallback(this), "Quit");
+		playButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 - 110), false, new PlayButtonCallback(this), "Play");
+		helpButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2), false, new HelpButtonCallback(this), "Instructions");
+		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 110), false, new QuitButtonCallback(this), "Quit");
 	}
 
 	public void Update(double frameTime)
 	{
 		playButton.update();
+		helpButton.update();
 		quitButton.update();
 		
 		if (Key.wasPressed(Key.Escape))
@@ -55,12 +63,17 @@ public class MainMenuState extends State
 				Graphics.DrawImage(background, new Location(x * background.getWidth(), y * background.getHeight()));
 		
 		playButton.render();
+		helpButton.render();
 		quitButton.render();
 	}
 	
 	public void playButtonPressed()
 	{
 		State.EnterState(Game.getLevels().pop());
+	}
+	public void helpButtonPressed()
+	{
+		State.EnterState(new HelpState());
 	}
 	public void quitButtonPressed()
 	{

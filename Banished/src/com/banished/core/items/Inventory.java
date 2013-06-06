@@ -2,6 +2,7 @@ package com.banished.core.items;
 
 import java.util.*;
 
+//import processing.core.PApplet;
 import com.banished.Banished;
 import com.banished.core.Coordinate;
 import com.banished.core.Location;
@@ -43,6 +44,9 @@ public class Inventory implements IInventory
 		this.items = new Item[HEIGHT][];
 		for (int y = 0; y < HEIGHT; y++)
 			this.items[y] = new Item[WIDTH];
+		
+		try { this.items[0][0] = new Item(Items.TestSword, 69); } 
+		catch (Exception e) { e.printStackTrace(); }
 		
 		itemBorder = Image.fromFile("gui/item border.png");
 		equippedBorder = Image.fromFile("gui/item equipped border.png");
@@ -169,37 +173,25 @@ public class Inventory implements IInventory
 		}
 		else if (button == MouseButton.Right)
 		{
-//			// pick up half a stack, round up
-//			Item stack = this.items[y][x];
-//			if (stack == null) return null;
-//			int count = stack.getCount() / 2;
-//			// round up if stack count is odd
-//			if (stack.getCount() % 2 == 1)
-//				count++;
-//			
-//			try 
-//			{			
-//				if (count == stack.getCount())
-//					this.items[y][x] = null;
-//				else stack.setCount(stack.getCount() - count);
-//				return new Item(stack, count);
-//			} 
-//			catch (Exception e) 
-//			{
-//				e.printStackTrace();
-//			}
-			if (this.items[y][x] != null)
+			// pick up half a stack, round up
+			Item stack = this.items[y][x];
+			if (stack == null) return null;
+			int count = stack.getCount() / 2;
+			// round up if stack count is odd
+			if (stack.getCount() % 2 == 1)
+				count++;
+			
+			try 
+			{			
+				if (count == stack.getCount())
+					this.items[y][x] = null;
+				else stack.setCount(stack.getCount() - count);
+				return new Item(stack, count);
+			} 
+			catch (Exception e) 
 			{
-				this.items[y][x].use();
-				if (this.items[y][x].isConsumable())
-				{
-					if (this.items[y][x].getCount() == 1)
-						this.items[y][x] = null;
-					else
-						this.items[y][x].setCount(this.items[y][x].getCount() - 1);
-				}
+				e.printStackTrace();
 			}
-			return null;
 		}
 		else // middle button
 		{
@@ -207,7 +199,7 @@ public class Inventory implements IInventory
 			return null;
 		}
 		
-//		throw new Error("Should never get here...");
+		throw new Error("Should never get here...");
 	}
 
 	public Item accept(Item item, Object marker)
@@ -232,15 +224,23 @@ public class Inventory implements IInventory
 				if (item.getCount() <= diff)
 				{
 					// move entire stack to inventory
-					there.setCount(there.getCount() + item.getCount());
+					try { there.setCount(there.getCount() + item.getCount()); } 
+					catch (InvalidItemCountException e) { e.printStackTrace(); }
 					return null;
 				}
 				else
 				{
-					// move only part of stack to inventory
-					there.setCount(there.getMaxStackSize());
-					item.setCount(item.getCount() - diff);
-					return item;
+					try 
+					{
+						// move only part of stack to inventory
+						there.setCount(there.getMaxStackSize());
+						item.setCount(item.getCount() - diff);
+						return item;
+					} 
+					catch (InvalidItemCountException e) 
+					{ 
+						e.printStackTrace(); 
+					}
 				}
 			}
 			// no more room in the stack!
@@ -252,5 +252,6 @@ public class Inventory implements IInventory
 			this.items[y][x] = item;
 			return there;
 		}
+		throw new Error("Should never get here!");
 	}
 }

@@ -12,7 +12,7 @@ import com.banished.Banished;
 import com.banished.GameOverState;
 import com.banished.core.*;
 import com.banished.core.entities.enemies.EnemyEntity;
-import com.banished.core.items.Armor;
+import com.banished.core.items.Equippable;
 import com.banished.core.items.Inventory;
 import com.banished.core.items.Item;
 import com.banished.core.items.Weapon;
@@ -25,7 +25,7 @@ public class Player extends LivingEntity
 {
 	private static final double PLAYER_SPEED = 4,
 		PLAYER_STRENGTH = 2,
-		PLAYER_DEFENSE = 0;
+		PLAYER_DEFENSE = 1;
 	private static final double PLAYER_TIME_TO_ATTACK = .3;
 	
 	private static final double FIST_HITBOX_WIDTH = .5,
@@ -53,6 +53,8 @@ public class Player extends LivingEntity
 	
 	private int level, experience;
 	
+	private EntityImageSet chestImages, legsImages, shoesImages, glovesImages;
+	
 	public static final double	SHAPE_YOFFSET = .13,
 								LOC_YOFFSET = .6,
 								RADIUS = .2;
@@ -67,10 +69,20 @@ public class Player extends LivingEntity
 		return singleton;
 	}
 	
-	private Armor chest, legs, shoes, gloves;
-	private Weapon weapon;
 	private boolean invincibility = false;
 	
+	private Equippable[] wear;
+	@SuppressWarnings("unused")
+	private final int 
+		WEAPON = 0,
+		OFFHAND = 1,
+		HEAD = 2,
+		CHEST = 3,
+		LEGS = 4,
+		SHOES = 5,
+		GLOVES = 6,
+		PENDANT = 7,
+		WEAR_COUNT = 8;
 	
 	private boolean moving;
 	
@@ -82,12 +94,11 @@ public class Player extends LivingEntity
 		
 		singleton = this;
 		
+		this.wear = new Equippable[WEAR_COUNT];
+		//this.image = Image.fromFile("entities/player/plfront.png");
 		this.stamina = MAX_STAMINA;
 		this.level = 1;
 		this.experience = 0;
-		
-		this.chest = this.legs = this.shoes = this.gloves = null;
-		this.weapon = null;
 		
 		this.images = new EntityImageSet(new Image[]
 		{
@@ -112,7 +123,104 @@ public class Player extends LivingEntity
 				Image.fromFile("entities/player/plfront.png"),
 				Image.fromFile("entities/player/plfront1.png"),
 				Image.fromFile("entities/player/plfront2.png")
-		});		
+		});
+		this.chestImages = new EntityImageSet(new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron chest left.png"),
+			Image.fromFile("entities/player/armor/iron chest left 1.png"),
+			Image.fromFile("entities/player/armor/iron chest left 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron chest right.png"),
+			Image.fromFile("entities/player/armor/iron chest right 1.png"),
+			Image.fromFile("entities/player/armor/iron chest right 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron chest back.png"),
+			Image.fromFile("entities/player/armor/iron chest back 1.png"),
+			Image.fromFile("entities/player/armor/iron chest back 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron chest front.png"),
+			Image.fromFile("entities/player/armor/iron chest front 1.png"),
+			Image.fromFile("entities/player/armor/iron chest front 2.png")
+		});
+		this.legsImages = new EntityImageSet(new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron legs left.png"),
+			Image.fromFile("entities/player/armor/iron legs left 1.png"),
+			Image.fromFile("entities/player/armor/iron legs left 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron legs right.png"),
+			Image.fromFile("entities/player/armor/iron legs right 1.png"),
+			Image.fromFile("entities/player/armor/iron legs right 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron legs back.png"),
+			Image.fromFile("entities/player/armor/iron legs back 1.png"),
+			Image.fromFile("entities/player/armor/iron legs back 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron legs front.png"),
+			Image.fromFile("entities/player/armor/iron legs front 1.png"),
+			Image.fromFile("entities/player/armor/iron legs front 2.png")
+		});
+		this.shoesImages = new EntityImageSet(new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron shoes left.png"),
+			Image.fromFile("entities/player/armor/iron shoes left 1.png"),
+			Image.fromFile("entities/player/armor/iron shoes left 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron shoes right.png"),
+			Image.fromFile("entities/player/armor/iron shoes right 1.png"),
+			Image.fromFile("entities/player/armor/iron shoes right 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron shoes back.png"),
+			Image.fromFile("entities/player/armor/iron shoes back 1.png"),
+			Image.fromFile("entities/player/armor/iron shoes back 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron shoes front.png"),
+			Image.fromFile("entities/player/armor/iron shoes front 1.png"),
+			Image.fromFile("entities/player/armor/iron shoes front 2.png")
+		});
+		this.glovesImages = new EntityImageSet(new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron gloves left.png"),
+			Image.fromFile("entities/player/armor/iron gloves left 1.png"),
+			Image.fromFile("entities/player/armor/iron gloves left 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron gloves right.png"),
+			Image.fromFile("entities/player/armor/iron gloves right 1.png"),
+			Image.fromFile("entities/player/armor/iron gloves right 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron gloves back.png"),
+			Image.fromFile("entities/player/armor/iron gloves back 1.png"),
+			Image.fromFile("entities/player/armor/iron gloves back 2.png")
+		},
+		new Image[]
+		{
+			Image.fromFile("entities/player/armor/iron gloves front.png"),
+			Image.fromFile("entities/player/armor/iron gloves front 1.png"),
+			Image.fromFile("entities/player/armor/iron gloves front 2.png")
+		});
+		
 		
 		final int LEVEL_UP_FRAMES = 8;
 		Image[] levelUpFrames = new Image[LEVEL_UP_FRAMES];
@@ -164,8 +272,8 @@ public class Player extends LivingEntity
 		
 		//calcDamageSets();
 		
-		double hitBoxWidth = this.weapon == null ? FIST_HITBOX_WIDTH : this.weapon.HITBOX_WIDTH;
-		double hitBoxHeight = this.weapon == null ? FIST_HITBOX_HEIGHT : this.weapon.HITBOX_HEIGHT;
+		double hitBoxWidth = this.wear[WEAPON] == null ? FIST_HITBOX_WIDTH : ((Weapon)this.wear[WEAPON]).HITBOX_WIDTH;
+		double hitBoxHeight = this.wear[WEAPON] == null ? FIST_HITBOX_HEIGHT : ((Weapon)this.wear[WEAPON]).HITBOX_HEIGHT;
 		
 		RectangleCollisionShape hitBox = null;
 		switch (this.getDirection())
@@ -352,7 +460,7 @@ public class Player extends LivingEntity
 			singleton.calcDamageSets();
 			return;
 		}
-		if (weapon == null)
+		if (wear[WEAPON] == null)
 		{
 			STABILITY = FIST_STABILITY;
 			MAX_DAMAGE = FIST_DAMAGE * Math.log(STRENGTH);
@@ -361,6 +469,7 @@ public class Player extends LivingEntity
 		}
 		else
 		{
+			Weapon weapon = (Weapon)wear[WEAPON];
 			STABILITY = weapon.STABILITY;
 			MAX_DAMAGE = weapon.MAX_DAMAGE * Math.log(STRENGTH);
 		}
@@ -376,19 +485,6 @@ public class Player extends LivingEntity
 		
 		DEFENSE = PLAYER_DEFENSE;
 		STURDINESS = BASE_STURDINESS;
-	}
-	
-	public void heal(double health)
-	{
-		this.health += health;
-		if (this.health > this.MAX_HEALTH)
-			this.health = this.MAX_HEALTH;
-	}
-	public void addStamina(double stamina)
-	{
-		this.stamina += stamina;
-		if (this.stamina >= Player.MAX_STAMINA)
-			this.stamina = Player.MAX_STAMINA;
 	}
 
 	@Override
@@ -470,15 +566,10 @@ public class Player extends LivingEntity
 			stamina = Algorithms.increment(stamina, 10*frameTime, 0, MAX_STAMINA);
 		
 		this.images.update(frameTime);
-		
-		if (this.chest != null)
-			this.chest.getImages().update(frameTime);
-		if (this.legs != null)
-			this.legs.getImages().update(frameTime);
-		if (this.shoes != null)
-			this.shoes.getImages().update(frameTime);
-		if (this.gloves != null)
-			this.gloves.getImages().update(frameTime);
+		this.chestImages.update(frameTime);
+		this.legsImages.update(frameTime);
+		this.shoesImages.update(frameTime);
+		this.glovesImages.update(frameTime);
 		
 		this.levelUpAnim.update(frameTime);
 		
@@ -520,42 +611,30 @@ public class Player extends LivingEntity
 	public Image getChestImage()
 	{
 		if (this != singleton)
-			return singleton.getChestImage();
+			return singleton.getImage();
 		
-		if (this.chest == null)
-			return null;
-		
-		return moving ? this.chest.getImages().get(this.getDirection()) : this.chest.getImages().get(this.getDirection(), 0);
+		return moving ? this.chestImages.get(this.getDirection()) : this.chestImages.get(this.getDirection(), 0);
 	}
 	public Image getLegsImage()
 	{
 		if (this != singleton)
 			return singleton.getLegsImage();
 		
-		if (this.legs == null)
-			return null;
-		
-		return moving ? this.legs.getImages().get(this.getDirection()) : this.legs.getImages().get(this.getDirection(), 0);
+		return moving ? this.legsImages.get(this.getDirection()) : this.legsImages.get(this.getDirection(), 0);
 	}
 	public Image getShoesImage()
 	{
 		if (this != singleton)
 			return singleton.getShoesImage();
 		
-		if (this.shoes == null)
-			return null;
-		
-		return moving ? this.shoes.getImages().get(this.getDirection()) : this.shoes.getImages().get(this.getDirection(), 0);
+		return moving ? this.shoesImages.get(this.getDirection()) : this.shoesImages.get(this.getDirection(), 0);
 	}
 	public Image getGlovesImage()
 	{
 		if (this != singleton)
 			return singleton.getGlovesImage();
 		
-		if (this.gloves == null)
-			return null;
-		
-		return moving ? this.gloves.getImages().get(this.getDirection()) : this.gloves.getImages().get(this.getDirection(), 0);
+		return moving ? this.glovesImages.get(this.getDirection()) : this.glovesImages.get(this.getDirection(), 0);
 	}
 	
 	public Armor getChest() { return chest; }

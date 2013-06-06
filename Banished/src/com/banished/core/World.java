@@ -129,28 +129,25 @@ public class World
 					((LivingEntity)entity).renderEdges();
 			}
 			
-			Location drawLoc = entity.getLocation().sub(entity.getImageOffset()).mult(Tile.SIZE);
-			
 			if (entity instanceof SpawnerEntity)
 			{
 				Graphics.DrawImage(entity.getImage(),
 						((SpawnerEntity)entity).getSpawnerColor(),
-						drawLoc, ((SpawnerEntity)entity).getRotation());
+						entity.getLocation().sub(entity.getImageOffset()).mult(Tile.SIZE), ((SpawnerEntity)entity).getRotation());
 				Graphics.DrawImage(entity.getImage(),
 						((SpawnerEntity)entity).getSpawnerColor(),
-						drawLoc, 90 - ((SpawnerEntity)entity).getRotation());
+						entity.getLocation().sub(entity.getImageOffset()).mult(Tile.SIZE), 90 - ((SpawnerEntity)entity).getRotation());
 			}
 			else if (entity instanceof PortalForwardEntity)
-				Graphics.DrawImage(entity.getImage(), drawLoc, ((PortalForwardEntity)entity).getRotation());
+				Graphics.DrawImage(entity.getImage(), entity.getLocation().sub(entity.getImageOffset()).mult(Tile.SIZE), ((PortalForwardEntity)entity).getRotation());
 			else if (entity instanceof SlimeEntity)
-				Graphics.DrawImage(entity.getImage(), ((SlimeEntity)entity).getSlimeColor(), drawLoc);
+				Graphics.DrawImage(entity.getImage(), ((SlimeEntity)entity).getSlimeColor(), entity.getLocation().sub(entity.getImageOffset()).mult(Tile.SIZE));
 			else
 				Graphics.DrawImage(entity.getImage(), entity.getLocation().sub(entity.getImageOffset()).mult(Tile.SIZE));
 			
 			if (entity == Player.get())
 			{
 				Player p = Player.get();
-				
 				Graphics.DrawImage(p.getChestImage(), p.getLocation().sub(p.getImageOffset()).mult(Tile.SIZE));
 				Graphics.DrawImage(p.getLegsImage(), p.getLocation().sub(p.getImageOffset()).mult(Tile.SIZE));
 				Graphics.DrawImage(p.getShoesImage(), p.getLocation().sub(p.getImageOffset()).mult(Tile.SIZE));

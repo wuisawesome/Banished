@@ -3,6 +3,7 @@ package com.banished.core;
 import java.util.List;
 import java.util.ListIterator;
 import com.banished.core.entities.Entity;
+import com.banished.exceptions.InvalidTileTypeException;
 import com.banished.graphics.Image;
 
 public class Tile {
@@ -18,7 +19,10 @@ public class Tile {
 	private List<Entity> toShow;
 
 	public Tile(Coordinate location, int type, Object imageId, boolean solid)
-	{
+			throws InvalidTileTypeException {
+		if (type < 0)
+			throw new InvalidTileTypeException(type);
+
 		this.location = location;
 		this.type = type;
 		this.imageId = imageId;
@@ -27,8 +31,7 @@ public class Tile {
 		this.triggered = false;
 	}
 
-	public Tile(Tile copy, Coordinate location)
-	{
+	public Tile(Tile copy, Coordinate location) throws InvalidTileTypeException {
 		this(location, copy.getType(), copy.getImageId(), copy.isSolid());
 	}
 
