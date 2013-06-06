@@ -64,5 +64,10 @@ public class Spawner {
 	{
 		return new CursedManEntity(loc, world);
 	}
+	
+	public static ShadowEyeEntity shadowEye(Location loc, World world)
+	{
+		return new ShadowEyeEntity(loc, world);
+	}
 
 }

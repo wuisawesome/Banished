@@ -1,6 +1,9 @@
 package com.banished.levels;
 
 import java.util.ArrayList;
+
+import com.banished.core.items.Armor;
+import com.banished.core.items.Equippable;
 import com.banished.core.items.Inventory;
 import com.banished.core.items.Item;
 import com.banished.core.items.Items;
@@ -13,9 +16,6 @@ import com.banished.core.entities.Entity;
 import com.banished.core.entities.Player;
 import com.banished.core.entities.nonliving.ChestEntity;
 import com.banished.core.entities.nonliving.PortalForwardEntity;
-import com.banished.exceptions.InvalidItemCountException;
-import com.banished.exceptions.InvalidItemTypeException;
-import com.banished.exceptions.InvalidMaxStackSizeException;
 
 @SuppressWarnings("unused")
 public class LevelTwo extends LevelState {
@@ -41,7 +41,7 @@ public class LevelTwo extends LevelState {
 		Inventory inv = new Inventory();
 		try
 		{
-			inv.add(new Item(Items.TestSword, 100));
+			inv.add(new Armor(Items.IronChest));
 		} 
 		catch (Exception e) 
 		{

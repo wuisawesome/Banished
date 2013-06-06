@@ -3,6 +3,7 @@ package com.banished.graphics;
 import com.banished.core.Location;
 
 import processing.core.*;
+import processing.video.Movie;
 
 public class Graphics
 {
@@ -72,5 +73,9 @@ public class Graphics
 		Applet.popMatrix();
 	}
 	
-	
+	public static void DrawImage(Movie movie, Location location)
+	{
+		if (movie == null || location == null) return;
+		Applet.image(movie, (float)location.getX(), (float)location.getY());
+	}
 }

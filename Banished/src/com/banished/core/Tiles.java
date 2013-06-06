@@ -1,6 +1,5 @@
 package com.banished.core;
 
-import com.banished.exceptions.InvalidTileTypeException;
 import com.banished.graphics.Image;
 import com.banished.graphics.ImageMap;
 
@@ -123,7 +122,6 @@ public class Tiles
 	
 	private static int currentIndex = 1;
 	private static Tile makeTile(boolean solid, String imageName)
-			throws InvalidTileTypeException
 	{
 		Tile tile = new Tile(new Coordinate(-1, -1), currentIndex, currentIndex, solid);
 		tileImages.load(imageName, currentIndex);
@@ -135,7 +133,6 @@ public class Tiles
 		return tile;
 	}
 	private static Tile makeTile(boolean solid, String imageName, boolean flipHorizontal)
-		throws InvalidTileTypeException
 	{
 		Tile tile = new Tile(new Coordinate(-1, -1), currentIndex, currentIndex, solid);
 		Image image = Image.fromFile(imageName);

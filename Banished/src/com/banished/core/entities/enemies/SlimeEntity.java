@@ -30,7 +30,6 @@ public class SlimeEntity extends EnemyEntity
 	private static final float IMG_W = 52, IMG_H = 22;
 	public SlimeEntity(Location location, World world, Color color, double mult)
 	{
-		// image: 52x22 px
 		super(location, world, IMG_W/Tile.SIZE, IMG_H/Tile.SIZE, 0, IMG_W/Tile.SIZE/2, IMG_H/2/Tile.SIZE,
 				SLIME_MAX_HEALTH*mult, SLIME_STRENGTH*mult, SLIME_DEFENSE*Math.sqrt(mult), SLIME_SPEED*Math.pow(mult, 1/3), SLIME_RANGE, 
 				SLIME_TIME_TO_ATTACK, SLIME_SIGHT_RANGE, SLIME_EXP*(int)mult, 5, 25);

@@ -1,14 +1,26 @@
 package com.banished.core.items;
 
-import com.banished.exceptions.InvalidItemCountException;
-import com.banished.exceptions.InvalidItemTypeException;
-import com.banished.exceptions.InvalidMaxStackSizeException;
+import com.banished.core.entities.EntityImageSet;
 
-public abstract class Equippable extends Item
-{
-	public Equippable(int type, int count, int maxStackSize, String name, Object imageId)
-			throws InvalidItemTypeException, InvalidItemCountException, InvalidMaxStackSizeException
+public class Equippable extends Item
+{	
+	private EntityImageSet images;
+	
+	public Equippable(int type, int count, int maxStackSize, String name, Object imageId, EntityImageSet images)
 	{
-		super(type, count, maxStackSize, name, imageId);
+		super(type, count, maxStackSize, name, imageId, false);
+		this.images = images;
+	}
+	public Equippable(Equippable copy, int count)
+	{
+		super(copy, count);
+		this.images = copy.images;
+	}
+	
+	public EntityImageSet getImages() { return images; }
+	
+	public void use()
+	{
+		// swap with player's equipment
 	}
 }

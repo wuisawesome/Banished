@@ -19,18 +19,34 @@ public class HUD {
 	
 	public void render()
 	{
+		// boundary rectangle
 		Graphics.Applet.strokeWeight(1);
 		Graphics.Applet.stroke(0, 0, 0);
 		Graphics.Applet.fill(77, 77, 77);
 		Graphics.Applet.rect(DIST_FROM_SIDE, Graphics.Applet.getHeight() - (2*BAR_HEIGHT + 2*BAR_SPACING + EXP_HEIGHT), BAR_WIDTH, 20);
 		Graphics.Applet.rect(DIST_FROM_SIDE, Graphics.Applet.getHeight() - (BAR_HEIGHT + BAR_SPACING + EXP_HEIGHT), BAR_WIDTH, 20);
+		// health
 		Graphics.Applet.fill(255, 0, 0);
 		Graphics.Applet.rect(DIST_FROM_SIDE, Graphics.Applet.getHeight() - (2*BAR_HEIGHT + 2*BAR_SPACING + EXP_HEIGHT), (float)(BAR_WIDTH * Player.get().getHealth()/Player.get().getMaxHealth()), BAR_HEIGHT);
+		// stamina
 		Graphics.Applet.fill(255, 255, 0);
 		Graphics.Applet.rect(DIST_FROM_SIDE, Graphics.Applet.getHeight() - (BAR_HEIGHT + BAR_SPACING + EXP_HEIGHT), (float)(BAR_WIDTH * Player.get().getStamina()/Player.get().getMaxStamina()), BAR_HEIGHT);
+		// stamina red-zone
+		if (Player.get().getStamina() / Player.get().getMaxStamina() >= Player.STAMINA_SLOW_GROWTH_FRAC)
+		{
+			Graphics.Applet.fill(255, 150, 0);
+			Graphics.Applet.rect(DIST_FROM_SIDE, Graphics.Applet.getHeight() - (BAR_HEIGHT + BAR_SPACING + EXP_HEIGHT), (float)(BAR_WIDTH * Player.STAMINA_SLOW_GROWTH_FRAC), BAR_HEIGHT);
+		}
+		else
+		{
+			Graphics.Applet.fill(255, 150, 0);
+			Graphics.Applet.rect(DIST_FROM_SIDE, Graphics.Applet.getHeight() - (BAR_HEIGHT + BAR_SPACING + EXP_HEIGHT), (float)(BAR_WIDTH * Player.get().getStamina()/Player.get().getMaxStamina()), BAR_HEIGHT);
+		}
+		// experience
 		Graphics.Applet.fill(0, 255, 100);
 		Graphics.Applet.stroke(0, 0);
 		Graphics.Applet.rect(0, Graphics.Applet.getHeight() - EXP_HEIGHT, Graphics.Applet.getWidth() * Player.get().getExperience()/Algorithms.experience(Player.get().getLevel()), EXP_HEIGHT);
+		// text
 		Graphics.Applet.fill(0, 0, 0);
 		Graphics.Applet.textAlign(PConstants.RIGHT);
 		Graphics.Applet.textSize(18);

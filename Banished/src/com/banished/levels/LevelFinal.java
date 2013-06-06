@@ -9,7 +9,7 @@ public class LevelFinal extends LevelState {
 	
 	public LevelFinal(HUD hud, Player p)
 	{
-		super("levels/Final.blvl", hud, p, new Location(10.5, 27.5), Direction.North, "book/blankPage.png");
+		super("levels/Final.blvl", hud, p, new Location(9.5, 47.5), Direction.North, "book/blankPage.png");
 	}
 	
 	public void addEntities()

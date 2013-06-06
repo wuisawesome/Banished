@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 
 import com.banished.core.Location;
 import com.banished.core.State;
-import com.banished.core.Tile;
 import com.banished.graphics.Graphics;
 import com.banished.input.Key;
 import com.banished.input.Mouse;
@@ -12,10 +11,9 @@ import com.banished.input.Mouse.MouseButton;
 
 import processing.core.PApplet;
 
-@SuppressWarnings("unused")
 public class Banished extends PApplet
 {
-	public static final boolean FULLSCREEN = false;
+	public static final boolean FULLSCREEN = true;
 	public static final boolean DEBUGGING = true;
 	public static boolean SHOW_EDGE_DEBUGGING_INFO = false;
 	

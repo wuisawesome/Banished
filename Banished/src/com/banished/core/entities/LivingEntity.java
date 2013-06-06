@@ -17,9 +17,9 @@ public abstract class LivingEntity extends Entity {
 	protected double STRENGTH, DEFENSE;
 	protected double health;
 	
-	private double timeSinceAttack;
+	protected double timeSinceAttack;
 	private double timeToAttack;
-	private boolean canAttack;
+	protected boolean canAttack;
 	
 	protected double width, height;
 	

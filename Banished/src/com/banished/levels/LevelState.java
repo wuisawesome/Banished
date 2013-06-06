@@ -81,6 +81,7 @@ public abstract class LevelState extends State {
 	
 	public void Update(double frameTime)
 	{
+		world.update(frameTime);
 		
 		if(goNext == 1 && !Game.levels.isEmpty()){
 			goNext = 0;
@@ -95,7 +96,7 @@ public abstract class LevelState extends State {
 		if (Key.wasPressed(Key.Escape))
 			State.EnterState(new PauseMenuState());
 		
-		world.update(frameTime);
+		
 		if (Banished.DEBUGGING && Key.wasPressed(Key.F12))
 			Banished.SHOW_EDGE_DEBUGGING_INFO ^= true;
 		if (Banished.DEBUGGING && Key.isDown(Key.F1)){
