@@ -75,6 +75,13 @@ public class EntityImageSet
 		}
 	}
 	
+	public void synchronize(EntityImageSet other)
+	{
+		this.imageSwitchInterval = other.imageSwitchInterval;
+		this.elapsedTime = other.elapsedTime;
+		this.currentImageIndex = other.currentImageIndex;
+	}
+	
 	public Image get(Direction direction)
 	{
 		int imageIndex = -1;

@@ -115,7 +115,7 @@ public class Inventories
 			if (inv.isShown())
 			{
 				inv.render();
-				if (Banished.DEBUGGING)
+				if (Banished.DEBUGGING_INVENTORY)
 				{
 					List<Object> markers = inv.getItemMarkers();
 					for (Object marker : markers)

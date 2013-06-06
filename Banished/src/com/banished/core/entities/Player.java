@@ -14,6 +14,7 @@ import com.banished.core.*;
 import com.banished.core.entities.enemies.EnemyEntity;
 import com.banished.core.items.Armor;
 import com.banished.core.items.Inventory;
+import com.banished.core.items.Item;
 import com.banished.core.items.Weapon;
 import com.banished.graphics.Animation;
 import com.banished.graphics.Image;
@@ -529,7 +530,7 @@ public class Player extends LivingEntity
 	public Image getLegsImage()
 	{
 		if (this != singleton)
-			return singleton.getImage();
+			return singleton.getLegsImage();
 		
 		if (this.legs == null)
 			return null;
@@ -539,7 +540,7 @@ public class Player extends LivingEntity
 	public Image getShoesImage()
 	{
 		if (this != singleton)
-			return singleton.getImage();
+			return singleton.getShoesImage();
 		
 		if (this.shoes == null)
 			return null;
@@ -549,7 +550,7 @@ public class Player extends LivingEntity
 	public Image getGlovesImage()
 	{
 		if (this != singleton)
-			return singleton.getImage();
+			return singleton.getGlovesImage();
 		
 		if (this.gloves == null)
 			return null;
@@ -563,11 +564,41 @@ public class Player extends LivingEntity
 	public Armor getGloves() { return gloves; }
 	public Weapon getWeapon() { return weapon; }
 	
-	public void setChest(Armor chest) { this.chest = chest; }
-	public void setLegs(Armor legs) { this.legs = legs; }
-	public void setShoes(Armor shoes) { this.shoes = shoes; }
-	public void setGloves(Armor gloves) { this.gloves = gloves; }
-	public void setWeapon(Weapon weapon) { this.weapon = weapon; }
+	public void setChest(Armor chest)
+	{
+		if (chest != null)
+			chest.getImages().synchronize(images);
+		this.chest = chest;
+	}
+	public void setLegs(Armor legs)
+	{
+		if (legs != null)
+			legs.getImages().synchronize(images);
+		this.legs = legs;
+	}
+	public void setShoes(Armor shoes)
+	{
+		if (shoes != null)
+			shoes.getImages().synchronize(images);
+		this.shoes = shoes;
+	}
+	public void setGloves(Armor gloves)
+	{
+		if (gloves != null)
+			gloves.getImages().synchronize(images);
+		this.gloves = gloves;
+	}
+	public void setWeapon(Weapon weapon)
+	{
+		if (weapon != null)
+			weapon.getImages().synchronize(images);
+		this.weapon = weapon;
+	}
+	
+	public boolean isWearing(Item item)
+	{
+		return item == chest || item == legs || item == shoes || item == gloves || item == weapon;
+	}
 	
 	public double getStamina(){ return stamina; }
 	public double getMaxStamina(){ return MAX_STAMINA; }

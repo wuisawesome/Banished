@@ -5,6 +5,7 @@ import java.util.*;
 import com.banished.Banished;
 import com.banished.core.Coordinate;
 import com.banished.core.Location;
+import com.banished.core.entities.Player;
 import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 import com.banished.input.Mouse.MouseButton;
@@ -24,7 +25,7 @@ public class Inventory implements IInventory
 	// #pixels between items
 	static final int SPACING = 2 * BORDER_WIDTH + BORDER_SPACING;
 	
-	Image itemBorder;
+	Image itemBorder, equippedBorder;
 	
 	boolean shown;
 	
@@ -44,6 +45,7 @@ public class Inventory implements IInventory
 			this.items[y] = new Item[WIDTH];
 		
 		itemBorder = Image.fromFile("gui/item border.png");
+		equippedBorder = Image.fromFile("gui/item equipped border.png");
 		
 		pxItemsWidth = (Item.IMAGE_WIDTH + SPACING) * WIDTH;
 		pxItemsHeight = (Item.IMAGE_HEIGHT + SPACING) * HEIGHT;
@@ -121,6 +123,11 @@ public class Inventory implements IInventory
 				
 				Item item = items[y][x];
 				if (item == null) continue;
+				
+				if (Player.get().isWearing(item))
+					Graphics.DrawImage(equippedBorder, new Location(pxInvLeft + areaWidth * x,
+							pxInvTop + areaHeight * y));
+				
 				item.renderAt(
 					pxItemsLeft + areaWidth * x, 
 					pxItemsTop + areaHeight * y,
