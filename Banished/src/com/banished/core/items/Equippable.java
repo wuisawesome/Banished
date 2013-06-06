@@ -1,14 +1,21 @@
 package com.banished.core.items;
 
-import com.banished.exceptions.InvalidItemCountException;
-import com.banished.exceptions.InvalidItemTypeException;
-import com.banished.exceptions.InvalidMaxStackSizeException;
+import com.banished.core.entities.EntityImageSet;
 
 public abstract class Equippable extends Item
 {
-	public Equippable(int type, int count, int maxStackSize, String name, Object imageId)
-			throws InvalidItemTypeException, InvalidItemCountException, InvalidMaxStackSizeException
+	private EntityImageSet images;
+	
+	public Equippable(int type, String name, Object imageId, EntityImageSet images)
 	{
-		super(type, count, maxStackSize, name, imageId);
+		super(type, 0, 1, name, imageId, false);
+		this.images = images;
 	}
+	public Equippable(Equippable copy)
+	{
+		this(copy.getType(), copy.getName(), copy.getImageId(), copy.images);
+		this.setCount(1);
+	}
+	
+	public EntityImageSet getImages() { return images; }
 }

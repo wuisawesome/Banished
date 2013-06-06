@@ -13,14 +13,14 @@ public class Armor extends Equippable
 
 	public Armor(int type, String name, Object imageId, EntityImageSet images, ArmorType armorType, double defense, double health)
 	{
-		super(type, 0, 1, name, imageId, images);
+		super(type, name, imageId, images);
 		this.armorType = armorType;
 		this.defense = defense;
 		this.health = health;
 	}
 	public Armor(Armor copy)
 	{
-		super(copy, 1);
+		super(copy);
 		this.armorType = copy.armorType;
 		this.defense = copy.defense;
 		this.health = copy.health;

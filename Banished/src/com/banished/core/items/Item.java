@@ -3,7 +3,6 @@ package com.banished.core.items;
 import processing.core.PApplet;
 
 import com.banished.core.Location;
-import com.banished.exceptions.*;
 import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 
@@ -17,28 +16,29 @@ public class Item
 	private final String name;
 	private Object imageId;
 	
-	public Item(Item copy, int count) throws InvalidItemTypeException,
-			InvalidItemCountException, InvalidMaxStackSizeException
+	private boolean consumable;
+	
+	public Item(Item copy, int count)
 	{
-		this(copy.type, count, copy.maxStackSize, copy.name, copy.imageId);
+		this(copy.type, count, copy.maxStackSize, copy.name, copy.imageId, copy.consumable);
 	}
 	
-	public Item(int type, int count, int maxStackSize, String name, Object imageId)
-			throws InvalidItemTypeException, InvalidItemCountException,
-				InvalidMaxStackSizeException
+	public Item(int type, int count, int maxStackSize, String name, Object imageId, boolean consumable)
 	{
-		if (type < 0 || type >= Items.NumItems)
-			throw new InvalidItemTypeException(type);
 		if (maxStackSize < 0)
-			throw new InvalidMaxStackSizeException(maxStackSize);
-		if (count < 0 || count > maxStackSize)
-			throw new InvalidItemCountException(count, type, maxStackSize);
+			maxStackSize = 1;
+		if (count < 0)
+			count = 0;
+		else if (count > maxStackSize)
+			count = maxStackSize;
 		
 		this.type = type;
 		this.count = count;
 		this.maxStackSize = maxStackSize;
 		this.name = name;
 		this.imageId = imageId;
+		
+		this.consumable = consumable;
 	}
 	
 	public int getType() { return this.type; }
@@ -47,10 +47,12 @@ public class Item
 	public Object getImageId() { return this.imageId; }
 	public String getName() { return this.name; }
 	
-	public void setCount(int count) throws InvalidItemCountException
+	public void setCount(int count)
 	{
-		if (count < 0 || count > this.maxStackSize)
-			throw new InvalidItemCountException(count, this.type, this.maxStackSize);
+		if (count < 0)
+			count = 0;
+		else if (count > maxStackSize)
+			count = maxStackSize;
 		this.count = count;
 	}
 	
@@ -76,6 +78,9 @@ public class Item
 			Graphics.Applet.popMatrix();
 		}
 	}
+	
+	public boolean isConsumable() { return consumable; }
+	public void use() { }
 	
 	public String toText()
 	{

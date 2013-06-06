@@ -1,6 +1,8 @@
 package com.banished.levels;
 
 import java.util.ArrayList;
+
+import com.banished.core.items.Armor;
 import com.banished.core.items.Inventory;
 import com.banished.core.items.Item;
 import com.banished.core.items.Items;
@@ -13,9 +15,6 @@ import com.banished.core.entities.Entity;
 import com.banished.core.entities.Player;
 import com.banished.core.entities.nonliving.ChestEntity;
 import com.banished.core.entities.nonliving.PortalForwardEntity;
-import com.banished.exceptions.InvalidItemCountException;
-import com.banished.exceptions.InvalidItemTypeException;
-import com.banished.exceptions.InvalidMaxStackSizeException;
 
 @SuppressWarnings("unused")
 public class LevelTwo extends LevelState {
@@ -39,14 +38,8 @@ public class LevelTwo extends LevelState {
 		world.addEntity(Spawner.redSpawner(new Location(18.5,  5.5), world));
 		
 		Inventory inv = new Inventory();
-		try
-		{
-			inv.add(new Item(Items.TestSword, 100));
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
+		inv.add(new Armor(Items.BronzeChest));
+		inv.add(new Armor(Items.BronzeLegs));
 		world.addEntity(new ChestEntity(world, new Location(10.25, 2.25), inv));
 	}
 

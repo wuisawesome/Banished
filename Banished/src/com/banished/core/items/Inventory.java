@@ -45,9 +45,6 @@ public class Inventory implements IInventory
 		for (int y = 0; y < HEIGHT; y++)
 			this.items[y] = new Item[WIDTH];
 		
-		try { this.items[0][0] = new Item(Items.TestSword, 69); } 
-		catch (Exception e) { e.printStackTrace(); }
-		
 		itemBorder = Image.fromFile("gui/item border.png");
 		equippedBorder = Image.fromFile("gui/item equipped border.png");
 		
@@ -173,33 +170,23 @@ public class Inventory implements IInventory
 		}
 		else if (button == MouseButton.Right)
 		{
-			// pick up half a stack, round up
 			Item stack = this.items[y][x];
 			if (stack == null) return null;
-			int count = stack.getCount() / 2;
-			// round up if stack count is odd
-			if (stack.getCount() % 2 == 1)
-				count++;
 			
-			try 
-			{			
-				if (count == stack.getCount())
-					this.items[y][x] = null;
-				else stack.setCount(stack.getCount() - count);
-				return new Item(stack, count);
-			} 
-			catch (Exception e) 
+			stack.use();
+			if (stack.isConsumable())
 			{
-				e.printStackTrace();
+				if (stack.getCount() == 1)
+					this.items[y][x] = null;
+				else stack.setCount(stack.getCount() - 1);
 			}
+			return null;
 		}
 		else // middle button
 		{
 			// do nothing
 			return null;
 		}
-		
-		throw new Error("Should never get here...");
 	}
 
 	public Item accept(Item item, Object marker)
@@ -224,23 +211,15 @@ public class Inventory implements IInventory
 				if (item.getCount() <= diff)
 				{
 					// move entire stack to inventory
-					try { there.setCount(there.getCount() + item.getCount()); } 
-					catch (InvalidItemCountException e) { e.printStackTrace(); }
+					there.setCount(there.getCount() + item.getCount());
 					return null;
 				}
 				else
 				{
-					try 
-					{
-						// move only part of stack to inventory
-						there.setCount(there.getMaxStackSize());
-						item.setCount(item.getCount() - diff);
-						return item;
-					} 
-					catch (InvalidItemCountException e) 
-					{ 
-						e.printStackTrace(); 
-					}
+					// move only part of stack to inventory
+					there.setCount(there.getMaxStackSize());
+					item.setCount(item.getCount() - diff);
+					return item;
 				}
 			}
 			// no more room in the stack!
@@ -252,6 +231,5 @@ public class Inventory implements IInventory
 			this.items[y][x] = item;
 			return there;
 		}
-		throw new Error("Should never get here!");
 	}
 }
