@@ -1,0 +1,16 @@
+24 15
+|CC_DR|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|AC_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|CC_DL
+|W_R########|DW_V#############|W_L
+|W_R########|DW_V#|XC_UL|W_U|W_U|W_U|W_U|W_U|W_U|W_U|W_U|W_U|XC_UR#|W_L
+|W_R########|WW_LU|W_U|CC_UL.........|W_R#|W_L
+|W_R########|W_L|CC_DR|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|W_D|CC_DL|W_R#|W_L
+|W_R########|W_L|W_R#########|W_L|W_R#|W_L
+|W_R########|W_L|W_R#|XC_UL|W_U|W_U|W_U|W_U|W_U|W_U|W_U|CC_UL|W_R#|W_L
+|W_R########|W_L|W_R#|W_L|CC_DR|W_D|W_D|W_D|AC_D|W_D|W_D|W_D|WW_RD#|W_L
+|W_R#|XC_UL|XC_UR#|XC_UL|XC_UR#|XC_UL|CC_UL|W_R#|W_L|W_R###|DW_V###|DW_V#|W_L
+|W_R#|W_L|W_R#|W_L|W_R#|XC_DL|W_D|XC_DR#|W_L|W_R#|U_D#|DW_V#|U_D#|DW_V#|W_L
+|W_R#|W_L|W_R#|W_L|W_R#####|W_L|W_R#|DW_V#|DW_V#|DW_V#|DW_V#|W_L
+|W_R#|W_L|W_R#|W_L|CC_UR|W_U|W_U|W_U|W_U|W_U|CC_UL|W_R#|DW_V#|DW_V#|DW_V#|DW_V#|W_L
+|W_R#|W_L|W_R#|XC_DL|W_D|W_D|W_D|W_D|W_D|W_D|W_D|XC_DR#|DW_V#|U_U#|DW_V#|U_U#|W_L
+|W_R#|W_L|W_R###########|DW_V###|DW_V###|W_L
+|CC_UR|W_U|CC_UL|CC_UR|W_U|W_U|W_U|W_U|W_U|W_U|W_U|W_U|W_U|W_U|W_U|AC_U|W_U|W_U|W_U|AC_U|W_U|W_U|W_U|CC_UL
