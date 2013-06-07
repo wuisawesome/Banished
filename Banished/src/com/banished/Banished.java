@@ -15,7 +15,7 @@ import processing.core.PApplet;
 @SuppressWarnings("unused")
 public class Banished extends PApplet
 {
-	public static final boolean FULLSCREEN = true;
+	public static final boolean FULLSCREEN = false;
 	public static final boolean DEBUGGING = true;
 	public static final boolean DEBUGGING_INVENTORY = false;
 	public static boolean SHOW_EDGE_DEBUGGING_INFO = false;

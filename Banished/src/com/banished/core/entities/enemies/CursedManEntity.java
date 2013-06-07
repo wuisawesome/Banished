@@ -34,27 +34,27 @@ public class CursedManEntity extends EnemyEntity {
 		
 		images = new EntityImageSet(new Image[]
 				{
-				Image.fromFile("entities/player/plleft.png"),
-				Image.fromFile("entities/player/plleft1.png"),
-				Image.fromFile("entities/player/plleft2.png")
+				Image.fromFile("entities/living_entities/zombie/zombie/plleft.png"),
+				Image.fromFile("entities/living_entities/zombie/plleft1.png"),
+				Image.fromFile("entities/living_entities/zombie/plleft2.png")
 		},
 		new Image[]
 		{
-				Image.fromFile("entities/player/plright.png"),
-				Image.fromFile("entities/player/plright1.png"),
-				Image.fromFile("entities/player/plright2.png")
+				Image.fromFile("entities/living_entities/zombie/plright.png"),
+				Image.fromFile("entities/living_entities/zombie/plright1.png"),
+				Image.fromFile("entities/living_entities/zombie/plright2.png")
 		},
 		new Image[]
 		{
-				Image.fromFile("entities/player/plback.png"),
-				Image.fromFile("entities/player/plback1.png"),
-				Image.fromFile("entities/player/plback2.png")
+				Image.fromFile("entities/living_entities/zombie/plback.png"),
+				Image.fromFile("entities/living_entities/zombie/plback1.png"),
+				Image.fromFile("entities/living_entities/zombie/plback2.png")
 		},
 		new Image[]
 		{
-				Image.fromFile("entities/player/plfront.png"),
-				Image.fromFile("entities/player/plfront1.png"),
-				Image.fromFile("entities/player/plfront2.png")
+				Image.fromFile("entities/living_entities/zombie/plfront.png"),
+				Image.fromFile("entities/living_entities/zombie/plfront1.png"),
+				Image.fromFile("entities/living_entities/zombie/plfront2.png")
 		});
 	}
 	

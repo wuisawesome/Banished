@@ -1,5 +1,6 @@
 package com.banished.core.entities;
 
+import java.awt.Component;
 import java.io.File;
 import java.util.*;
 
@@ -7,6 +8,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
+import javax.swing.JOptionPane;
 
 import com.banished.Banished;
 import com.banished.GameOverState;
@@ -17,12 +19,15 @@ import com.banished.core.items.Inventory;
 import com.banished.core.items.Item;
 import com.banished.core.items.Weapon;
 import com.banished.graphics.Animation;
+import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 import com.banished.input.Key;
 import com.banished.input.Mouse;
 
 public class Player extends LivingEntity
 {
+	private int kills, deaths;
+	
 	private static final double PLAYER_SPEED = 4,
 		PLAYER_STRENGTH = 2,
 		PLAYER_DEFENSE = 1;
@@ -136,6 +141,7 @@ public class Player extends LivingEntity
 		removeFromWorld();
 		
 		//System.out.println("The player died.");		
+		deaths++;
 		State.EnterState(new GameOverState());
 	}
 	
@@ -448,6 +454,15 @@ public class Player extends LivingEntity
 			this.move(tiles);
 		}
 		
+		if (Key.wasPressed(Key.E)){
+			String message = "";
+			message += "STATS: \n";
+			message += "Kills:\t" + kills + "\n";
+			message += "Deaths:\t" + deaths + "\n";
+			JOptionPane.showConfirmDialog(null, message, "STATISTICS", 
+				    JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE);
+		}
+		
 		if (this != singleton)
 		{
 			singleton.update(frameTime);
@@ -640,4 +655,6 @@ public class Player extends LivingEntity
 	{
 		health = MAX_HEALTH;
 	}
+	
+	public void killed(){kills++;}
 }
