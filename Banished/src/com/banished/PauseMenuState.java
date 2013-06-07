@@ -33,7 +33,7 @@ public class PauseMenuState extends State
 	{
 		background = Image.fromScreen();
 		resumeButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 - 75), false, new ResumeButtonCallback(this), "Resume");
-		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 25), false, new QuitButtonCallback(this), "Quit");
+		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 75), false, new QuitButtonCallback(this), "Quit");
 	}
 
 	public void Update(double frameTime)

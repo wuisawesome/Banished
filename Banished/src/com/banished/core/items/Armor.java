@@ -35,10 +35,10 @@ public class Armor extends Equippable
 	{
 		switch (this.armorType)
 		{
-			case Chest: Player.get().setChest(this); break;
-			case Legs: Player.get().setLegs(this); break;
-			case Shoes: Player.get().setShoes(this); break;
-			case Gloves: Player.get().setGloves(this); break;
+			case Chest: Player.get().setChest(Player.get().isWearing(this) ? null : this); break;
+			case Legs: Player.get().setLegs(Player.get().isWearing(this) ? null : this); break;
+			case Shoes: Player.get().setShoes(Player.get().isWearing(this) ? null : this); break;
+			case Gloves: Player.get().setGloves(Player.get().isWearing(this) ? null : this); break;
 		}
 	}
 }
