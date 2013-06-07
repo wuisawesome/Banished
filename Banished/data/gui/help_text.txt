@@ -16,7 +16,7 @@ Inventory:
   Left click: pick up and drop items in slots,
   Right click: equip/use items
 Book:
-  B: open/close book,
-  E/R: turn pages
+  B: open/close book.
+  E/R: turn pages.
   every level a new page will be added for you to read!
 Escape: pause the game.
