@@ -44,7 +44,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white chest front 1.png").tint(ironColor),
 			Image.fromFile("entities/player/armor/white chest front 2.png").tint(ironColor)
 		}),
-		0, 0);
+		5, 30);
 		IronLegs = makeArmor(1, "Iron Greaves", "items/iron legs.png",
 				Armor.ArmorType.Legs, new EntityImageSet(new Image[]
 		{
@@ -70,7 +70,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white legs front 1.png").tint(ironColor),
 			Image.fromFile("entities/player/armor/white legs front 2.png").tint(ironColor)
 		}),
-		0, 0);
+		4, 15);
 		IronShoes = makeArmor(2, "Iron Boots", "items/iron shoes.png",
 				Armor.ArmorType.Shoes, new EntityImageSet(new Image[]
 		{
@@ -96,7 +96,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white shoes front 1.png").tint(ironColor),
 			Image.fromFile("entities/player/armor/white shoes front 2.png").tint(ironColor)
 		}),
-		0, 0);
+		3, 0);
 		IronGloves = makeArmor(3, "Iron Gloves", "items/iron gloves.png",
 				Armor.ArmorType.Gloves, new EntityImageSet(new Image[]
 		{
@@ -122,7 +122,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white gloves front 1.png").tint(ironColor),
 			Image.fromFile("entities/player/armor/white gloves front 2.png").tint(ironColor)
 		}),
-		0, 0);
+		3, 0);
 		
 		final Color bronzeColor = new Color(205/Color.COLOR_MAX_VALUE, 127/Color.COLOR_MAX_VALUE, 50/Color.COLOR_MAX_VALUE);
 		BronzeChest = makeArmor(4, "Bronze Chestplate", "items/bronze chest.png",
@@ -150,7 +150,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white chest front 1.png").tint(bronzeColor),
 			Image.fromFile("entities/player/armor/white chest front 2.png").tint(bronzeColor)
 		}),
-		0, 0);
+		3, 10);
 		BronzeLegs = makeArmor(5, "Bronze Greaves", "items/bronze legs.png",
 				Armor.ArmorType.Legs, new EntityImageSet(new Image[]
 		{
@@ -176,7 +176,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white legs front 1.png").tint(bronzeColor),
 			Image.fromFile("entities/player/armor/white legs front 2.png").tint(bronzeColor)
 		}),
-		0, 0);
+		2, 5);
 		BronzeShoes = makeArmor(6, "Bronze Boots", "items/bronze shoes.png",
 				Armor.ArmorType.Shoes, new EntityImageSet(new Image[]
 		{
@@ -202,7 +202,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white shoes front 1.png").tint(bronzeColor),
 			Image.fromFile("entities/player/armor/white shoes front 2.png").tint(bronzeColor)
 		}),
-		0, 0);
+		1, 0);
 		BronzeGloves = makeArmor(7, "Bronze Gloves", "items/bronze gloves.png",
 				Armor.ArmorType.Gloves, new EntityImageSet(new Image[]
 		{
@@ -228,7 +228,7 @@ public class Items
 			Image.fromFile("entities/player/armor/white gloves front 1.png").tint(bronzeColor),
 			Image.fromFile("entities/player/armor/white gloves front 2.png").tint(bronzeColor)
 		}),
-		0, 0);
+		1, 0);
 		
 		HealthPotion = makePotion(8, 10, "items/potion/healthpotion.png", Potion.PotionType.Health);
 		StaminaPotion = makePotion(9, 10, "items/potion/staminapotion.png", Potion.PotionType.Stamina);

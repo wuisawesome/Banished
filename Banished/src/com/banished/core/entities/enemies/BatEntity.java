@@ -1,12 +1,6 @@
 package com.banished.core.entities.enemies;
 
-import java.io.File;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-
+import com.banished.SoundPlayer;
 import com.banished.core.Direction;
 import com.banished.core.Location;
 import com.banished.core.Tile;
@@ -66,17 +60,8 @@ public class BatEntity extends EnemyEntity {
 	public void takeDamage(double damage)
 	{
 		super.takeDamage(damage);
-		 try{
-		        AudioInputStream audio = AudioSystem.getAudioInputStream(new File("data/entities/living_entities/bat/batsound.wav").getAbsoluteFile());
-		        Clip clip = AudioSystem.getClip();
-		        clip.open(audio);
-		        FloatControl gain = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
-		        gain.setValue(-5.0f);
-		        clip.start();
-		    } catch(Exception e){
-		        System.out.println("Cannot play sound");
-		        e.printStackTrace();
-		    }
+		SoundPlayer.getPlayer(SoundPlayer.Sound.BatSound).rewind();
+		SoundPlayer.getPlayer(SoundPlayer.Sound.BatSound).play();
 	}
 
 	public void flashImage() 

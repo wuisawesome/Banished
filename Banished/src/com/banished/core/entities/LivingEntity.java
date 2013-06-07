@@ -66,7 +66,7 @@ public abstract class LivingEntity extends Entity {
 		else if(this instanceof Player)
 			world.addDispToAdd(new DamageDisplay((int)healthRed, new Location(Algorithms.randMult(getLocation().getX() - width/4, getLocation().getX() + width/4), 
 					Algorithms.randMult(getLocation().getY() - height/2, getLocation().getY() - height/4)), world, new Color(Color.Red)));
-		if((health = Algorithms.increment(health, -healthRed, 0, MAX_HEALTH)) < 1)
+		if((health = Algorithms.increment(health, -healthRed, 0, getMaxHealth())) < 1)
 			onDeath();
 	}
 	
@@ -93,7 +93,7 @@ public abstract class LivingEntity extends Entity {
 		if (timeSinceAttack >= timeToAttack)
 			canAttack = true;
 		
-		health = Algorithms.increment(health, frameTime, 0, MAX_HEALTH);
+		health = Algorithms.increment(health, frameTime, 0, getMaxHealth());
 	}
 	
 	protected abstract void calcDefenseSets();

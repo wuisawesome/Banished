@@ -1,17 +1,12 @@
 package com.banished.core.entities;
 
-import java.awt.Component;
-import java.io.File;
 import java.util.*;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import javax.swing.JOptionPane;
 
 import com.banished.Banished;
 import com.banished.GameOverState;
+import com.banished.SoundPlayer;
 import com.banished.core.*;
 import com.banished.core.entities.enemies.EnemyEntity;
 import com.banished.core.items.Armor;
@@ -19,7 +14,6 @@ import com.banished.core.items.Inventory;
 import com.banished.core.items.Item;
 import com.banished.core.items.Weapon;
 import com.banished.graphics.Animation;
-import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 import com.banished.input.Key;
 import com.banished.input.Mouse;
@@ -155,8 +149,8 @@ public class Player extends LivingEntity
 	public void heal(double health)
 	{
 		this.health += health;
-		if (this.health > this.MAX_HEALTH)
-			this.health = this.MAX_HEALTH;
+		if (this.health > this.getMaxHealth())
+			this.health = this.getMaxHealth();
 	}
 	public void addStamina(double stamina)
 	{
@@ -351,17 +345,8 @@ public class Player extends LivingEntity
 */
 	private void attackSound()
 	{
-	    try{
-	        AudioInputStream audio = AudioSystem.getAudioInputStream(new File("data/entities/player/swords/swordSound.wav").getAbsoluteFile());
-	        Clip clip = AudioSystem.getClip();
-	        clip.open(audio);
-	        FloatControl gain = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
-	        gain.setValue(-15.0f);
-	        clip.start();
-	    } catch(Exception e){
-	        System.out.println("Cannot play sound");
-	        e.printStackTrace();
-	    }
+		SoundPlayer.getPlayer(SoundPlayer.Sound.Sword).rewind();
+		SoundPlayer.getPlayer(SoundPlayer.Sound.Sword).play();
 	}
 	
 	protected void calcDamageSets()
@@ -403,6 +388,25 @@ public class Player extends LivingEntity
 		if(gloves != null)
 			DEFENSE += gloves.getDefense();
 		STURDINESS = BASE_STURDINESS;
+	}
+	
+	public double getMaxHealth()
+	{
+		double health = super.getMaxHealth();
+		
+		if(chest != null)
+			health += chest.getHealth();
+		if(legs != null)
+			health += legs.getHealth();
+		if(shoes != null)
+			health += shoes.getHealth();
+		if(gloves != null)
+			health += gloves.getHealth();
+		
+		if (health > Player.HEALTH_LIMIT)
+			health = Player.HEALTH_LIMIT;
+		
+		return health;
 	}
 
 	@Override
@@ -454,7 +458,7 @@ public class Player extends LivingEntity
 			this.move(tiles);
 		}
 		
-		if (Key.wasPressed(Key.E)){
+		if (Key.wasPressed(Key.Q)){
 			String message = "";
 			message += "STATS: \n";
 			message += "Kills:\t" + kills + "\n";
@@ -519,7 +523,7 @@ public class Player extends LivingEntity
 	public void levelUp()
 	{
 		level++;
-		health = MAX_HEALTH = Algorithms.increment(MAX_HEALTH, Algorithms.getValInRange(20 + level, 0.8, 1.2), MAX_HEALTH, HEALTH_LIMIT);
+		MAX_HEALTH = Algorithms.increment(MAX_HEALTH, Algorithms.getValInRange(20 + level, 0.8, 1.2), MAX_HEALTH, HEALTH_LIMIT);
 		if(level < 10){
 			STRENGTH = Algorithms.increment(STRENGTH, Algorithms.getValInRange(level, 0, 1), STRENGTH, STAT_LIMIT);
 			DEFENSE = Algorithms.increment(DEFENSE, Algorithms.getValInRange(level, 0, 1), DEFENSE, STAT_LIMIT);
@@ -527,6 +531,8 @@ public class Player extends LivingEntity
 			STRENGTH = Algorithms.increment(STRENGTH, Algorithms.getValInRange(5 + level/2, 0, 1), STRENGTH, STAT_LIMIT);
 			DEFENSE = Algorithms.increment(DEFENSE, Algorithms.getValInRange(5 + level/2, 0, 1), DEFENSE, STAT_LIMIT);
 		}
+		
+		health = getMaxHealth();
 		
 		this.levelUpAnim.reset();
 		this.levelUpAnim.start();
@@ -653,7 +659,7 @@ public class Player extends LivingEntity
 	
 	public void restorePlayerHealth()
 	{
-		health = MAX_HEALTH;
+		health = getMaxHealth();
 	}
 	
 	public void killed(){kills++;}
