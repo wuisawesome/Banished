@@ -7,7 +7,7 @@ import com.banished.core.entities.*;
 import com.banished.core.items.*;
 import com.banished.levels.*;
 
-import ddf.minim.Minim;
+//import ddf.minim.Minim;
 
 public class Game
 {	
@@ -16,7 +16,7 @@ public class Game
 	World world;
 	HUD hud;
 	
-	public static Minim MinimAudio;
+//	public static Minim MinimAudio;
 	
 	public static void run()
 	{
