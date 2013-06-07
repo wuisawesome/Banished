@@ -1,5 +1,7 @@
 package com.banished;
 
+import processing.core.PConstants;
+
 import com.banished.core.Coordinate;
 import com.banished.core.Location;
 import com.banished.core.State;
@@ -12,7 +14,7 @@ import com.banished.input.Key;
 
 public class MainMenuState extends State
 {
-	Button playButton, helpButton, quitButton;
+	Button playButton, helpButton, quitButton, creditsButton;
 	private static class PlayButtonCallback implements ButtonCallback
 	{
 		private MainMenuState mainMenu;
@@ -31,12 +33,19 @@ public class MainMenuState extends State
 		public HelpButtonCallback(MainMenuState mainMenu) { this.mainMenu = mainMenu; }
 		public void onClicked(Button sender) { mainMenu.helpButtonPressed(); }
 	}
+	private static class CreditsButtonCallback implements ButtonCallback
+	{
+		private MainMenuState mainMenu;
+		public CreditsButtonCallback(MainMenuState mainMenu) { this.mainMenu = mainMenu; }
+		public void onClicked(Button sender) { mainMenu.creditsButtonPressed(); }
+	}
 
 	public MainMenuState()
 	{
 		playButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 - 110), false, new PlayButtonCallback(this), "Play");
 		helpButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2), false, new HelpButtonCallback(this), "Instructions");
-		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 110), false, new QuitButtonCallback(this), "Quit");
+		creditsButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 110), false, new CreditsButtonCallback(this), "Credits");
+		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 220), false, new QuitButtonCallback(this), "Quit");
 	}
 
 	public void Update(double frameTime)
@@ -44,6 +53,7 @@ public class MainMenuState extends State
 		playButton.update();
 		helpButton.update();
 		quitButton.update();
+		creditsButton.update();
 		
 		if (Key.wasPressed(Key.Escape))
 			quitButtonPressed();
@@ -62,9 +72,17 @@ public class MainMenuState extends State
 			for (int y = 0; y < numTilesY; y++)
 				Graphics.DrawImage(background, new Location(x * background.getWidth(), y * background.getHeight()));
 		
+		Graphics.Applet.fill(255, 255, 0);
+		Graphics.Applet.textAlign(PConstants.CENTER);
+		Graphics.Applet.textSize(60);
+		Graphics.Applet.text("Banished", Banished.width() / 2, 80);
+		Graphics.Applet.textSize(30);
+		Graphics.Applet.fill(255);
+		
 		playButton.render();
 		helpButton.render();
 		quitButton.render();
+		creditsButton.render();
 	}
 	
 	public void playButtonPressed()
@@ -78,5 +96,9 @@ public class MainMenuState extends State
 	public void quitButtonPressed()
 	{
 		Game.exit();
+	}
+	public void creditsButtonPressed()
+	{
+		
 	}
 }
