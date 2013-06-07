@@ -1,13 +1,9 @@
 package com.banished.core;
 
-import java.io.File;
 import java.util.ArrayList;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-
 import com.banished.Banished;
+import com.banished.SoundPlayer;
 import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 
@@ -63,16 +59,10 @@ public class Book {
 		return false;
 	}
 	
-    public static void pageTurn(){
-	    try{
-	        AudioInputStream audio = AudioSystem.getAudioInputStream(new File("data/book/flipPages.wav").getAbsoluteFile());
-	        Clip clip = AudioSystem.getClip();
-	        clip.open(audio);
-	        clip.start();
-	    } catch(Exception e){
-	        System.out.println("Cannot play sound");
-	        e.printStackTrace();
-	    }
+    public static void pageTurn()
+    {
+    	SoundPlayer.getPlayer(SoundPlayer.Sound.FlipPages).rewind();
+    	SoundPlayer.getPlayer(SoundPlayer.Sound.FlipPages).play();
 	}
 
 }

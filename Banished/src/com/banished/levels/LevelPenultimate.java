@@ -3,10 +3,8 @@ package com.banished.levels;
 import com.banished.core.Direction;
 import com.banished.core.HUD;
 import com.banished.core.Location;
-import com.banished.core.Spawner;
 import com.banished.core.entities.Player;
 import com.banished.core.entities.enemies.ShadowFaceEntity;
-import com.banished.core.entities.nonliving.PortalForwardEntity;
 
 public class LevelPenultimate extends LevelState {
 	

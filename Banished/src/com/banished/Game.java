@@ -39,8 +39,8 @@ public class Game
 		Player.get().getPlayerInv().add(new Potion(Items.StaminaPotion, 5));
 		
 		
-//		MinimAudio = new Minim(Banished.getApplet());
-//		SoundPlayer.loadSounds();
+		MinimAudio = new Minim(Banished.getApplet());
+		SoundPlayer.loadSounds();
 		loopMusic();
 	}
 	
@@ -64,13 +64,13 @@ public class Game
 	
 	private static void loopMusic()
 	{
-//		SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).loop();
+		SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).loop();
 	}
 	
 	public static void exit()
 	{
-//		SoundPlayer.freeSounds();
-//		MinimAudio.stop();
+		SoundPlayer.freeSounds();
+		MinimAudio.stop();
 		
 		Banished.exitApp();
 	}

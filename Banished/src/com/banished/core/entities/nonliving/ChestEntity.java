@@ -1,12 +1,6 @@
 package com.banished.core.entities.nonliving;
 
-import java.io.File;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-
+import com.banished.SoundPlayer;
 import com.banished.core.Direction;
 import com.banished.core.Location;
 import com.banished.core.Tile;
@@ -79,21 +73,16 @@ public class ChestEntity extends Entity
 		}
 		public void onInteractedWith()
 		{
-			AudioInputStream audio;
-			try{
-				if(chest.closed)
-					audio = AudioSystem.getAudioInputStream(new File("data/entities/object_entities/chest/chestopen.wav").getAbsoluteFile());
-				else
-					audio = AudioSystem.getAudioInputStream(new File("data/entities/object_entities/chest/chestclose.wav").getAbsoluteFile());
-		        Clip clip = AudioSystem.getClip();
-		        clip.open(audio);
-		        FloatControl gain = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
-		        gain.setValue(-10.0f);
-		        clip.start();
-		    } catch(Exception e){
-		        System.out.println("Cannot play sound");
-		        e.printStackTrace();
-		    }
+			if(chest.closed)
+			{
+				SoundPlayer.getPlayer(SoundPlayer.Sound.ChestOpen).rewind();
+				SoundPlayer.getPlayer(SoundPlayer.Sound.ChestOpen).play();
+			}
+			else
+			{
+				SoundPlayer.getPlayer(SoundPlayer.Sound.ChestClose).rewind();
+				SoundPlayer.getPlayer(SoundPlayer.Sound.ChestClose).play();
+			}
 			chest.closed = !chest.closed;
 			chest.inv.setShown(!chest.closed);
 		}

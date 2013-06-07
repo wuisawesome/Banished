@@ -1,17 +1,12 @@
 package com.banished.core.entities;
 
-import java.awt.Component;
-import java.io.File;
 import java.util.*;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import javax.swing.JOptionPane;
 
 import com.banished.Banished;
 import com.banished.GameOverState;
+import com.banished.SoundPlayer;
 import com.banished.core.*;
 import com.banished.core.entities.enemies.EnemyEntity;
 import com.banished.core.items.Armor;
@@ -19,7 +14,6 @@ import com.banished.core.items.Inventory;
 import com.banished.core.items.Item;
 import com.banished.core.items.Weapon;
 import com.banished.graphics.Animation;
-import com.banished.graphics.Graphics;
 import com.banished.graphics.Image;
 import com.banished.input.Key;
 import com.banished.input.Mouse;
@@ -351,17 +345,8 @@ public class Player extends LivingEntity
 */
 	private void attackSound()
 	{
-	    try{
-	        AudioInputStream audio = AudioSystem.getAudioInputStream(new File("data/entities/player/swords/swordSound.wav").getAbsoluteFile());
-	        Clip clip = AudioSystem.getClip();
-	        clip.open(audio);
-	        FloatControl gain = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
-	        gain.setValue(-15.0f);
-	        clip.start();
-	    } catch(Exception e){
-	        System.out.println("Cannot play sound");
-	        e.printStackTrace();
-	    }
+		SoundPlayer.getPlayer(SoundPlayer.Sound.Sword).rewind();
+		SoundPlayer.getPlayer(SoundPlayer.Sound.Sword).play();
 	}
 	
 	protected void calcDamageSets()
