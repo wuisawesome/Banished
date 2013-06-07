@@ -13,10 +13,10 @@ import com.banished.graphics.Image;
 
 public class ShadowEyeEntity extends EnemyEntity
 {
-	private static final double SHADOWEYE_MAX_HEALTH = 700;
+	private static final double SHADOWEYE_MAX_HEALTH = 2000;
 	private static final double SHADOWEYE_RANGE = 7;
 	private static final double SHADOWEYE_STRENGTH = 0;
-	private static final double SHADOWEYE_DEFENSE = 25;
+	private static final double SHADOWEYE_DEFENSE = 45;
 	private static final double SHADOWEYE_SPEED = 0;
 	private static final double SHADOWEYE_SIGHT_RANGE = 7;
 	private static final double SHADOWEYE_TIME_TO_ATTACK = 20;

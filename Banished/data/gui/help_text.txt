@@ -10,4 +10,10 @@ Attacks:
   D: dash attack; 
      a lot of damage in a straight line in front of you; 
      takes a medium amount of stamina.
-Enemies: kill all of them!
+Enemies: Kill all of them!
+Inventory:
+     Press 'I' to toggle visibility.
+     Left click to pick up and drop items in slots,
+     Right click to equip/use items; equipped items will be highlighted green.
+Book: Press 'B' to toggle, 
+     every level a new page will be added for you to read!

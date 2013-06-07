@@ -15,7 +15,7 @@ public class ShadowEntity extends EnemyEntity {
 	private static final double SHADOW_MAX_HEALTH = 250;
 	private static final double SHADOW_RANGE = 2;
 	private static final double SHADOW_STRENGTH = 85;
-	private static final double SHADOW_DEFENSE = 20;
+	private static final double SHADOW_DEFENSE = 30;
 	private static final double SHADOW_SPEED = .2;
 	private static final double SHADOW_SIGHT_RANGE = 10;
 	private static final double SHADOW_TIME_TO_ATTACK = 4;

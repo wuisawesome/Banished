@@ -32,15 +32,15 @@ public class Player extends LivingEntity
 								FIST_HITBOX_HEIGHT = .5,
 								AOE_RADIUS = 3,
 								DASH_DIST = 3.5;
-	private static final double FIST_DAMAGE = 10,
+	private static final double FIST_DAMAGE = 5,
 								FIST_STABILITY = 0.5,
 								BASE_CRIT_RATE = 0.05,
 								BASE_CRIT_MULT = 1.2,
 								BASE_STURDINESS = 0;
 	private static final double MAX_STAMINA = 250,
 								ATT_STAM_RED = 25,
-								AOE_STAM_RED = 200,
-								DASH_STAM_RED = 125;
+								AOE_STAM_RED = 150,
+								DASH_STAM_RED = 100;
 	
 	public static final double INTERACTION_RANGE = 1;
 	
@@ -369,14 +369,14 @@ public class Player extends LivingEntity
 		if (weapon == null)
 		{
 			STABILITY = FIST_STABILITY;
-			MAX_DAMAGE = FIST_DAMAGE * Math.log(STRENGTH);
+			MAX_DAMAGE = FIST_DAMAGE * Math.sqrt(STRENGTH);
 			CRIT_RATE = BASE_CRIT_RATE;
 			CRIT_MULT = BASE_CRIT_MULT;
 		}
 		else
 		{
 			STABILITY = weapon.STABILITY;
-			MAX_DAMAGE = weapon.MAX_DAMAGE * Math.log(STRENGTH);
+			MAX_DAMAGE = weapon.MAX_DAMAGE * Math.sqrt(STRENGTH);
 		}
 	}
 	
@@ -389,6 +389,14 @@ public class Player extends LivingEntity
 		}
 		
 		DEFENSE = PLAYER_DEFENSE;
+		if(chest != null)
+			DEFENSE += chest.getDefense();
+		if(legs != null)
+			DEFENSE += legs.getDefense();
+		if(shoes != null)
+			DEFENSE += shoes.getDefense();
+		if(gloves != null)
+			DEFENSE += gloves.getDefense();
 		STURDINESS = BASE_STURDINESS;
 	}
 
