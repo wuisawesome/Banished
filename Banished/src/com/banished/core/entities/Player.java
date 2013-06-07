@@ -149,8 +149,8 @@ public class Player extends LivingEntity
 	public void heal(double health)
 	{
 		this.health += health;
-		if (this.health > this.MAX_HEALTH)
-			this.health = this.MAX_HEALTH;
+		if (this.health > this.getMaxHealth())
+			this.health = this.getMaxHealth();
 	}
 	public void addStamina(double stamina)
 	{
@@ -389,6 +389,25 @@ public class Player extends LivingEntity
 			DEFENSE += gloves.getDefense();
 		STURDINESS = BASE_STURDINESS;
 	}
+	
+	public double getMaxHealth()
+	{
+		double health = super.getMaxHealth();
+		
+		if(chest != null)
+			health += chest.getHealth();
+		if(legs != null)
+			health += legs.getHealth();
+		if(shoes != null)
+			health += shoes.getHealth();
+		if(gloves != null)
+			health += gloves.getHealth();
+		
+		if (health > Player.HEALTH_LIMIT)
+			health = Player.HEALTH_LIMIT;
+		
+		return health;
+	}
 
 	@Override
 	public Location move(double frameTime)
@@ -439,7 +458,7 @@ public class Player extends LivingEntity
 			this.move(tiles);
 		}
 		
-		if (Key.wasPressed(Key.E)){
+		if (Key.wasPressed(Key.Q)){
 			String message = "";
 			message += "STATS: \n";
 			message += "Kills:\t" + kills + "\n";
@@ -504,7 +523,7 @@ public class Player extends LivingEntity
 	public void levelUp()
 	{
 		level++;
-		health = MAX_HEALTH = Algorithms.increment(MAX_HEALTH, Algorithms.getValInRange(20 + level, 0.8, 1.2), MAX_HEALTH, HEALTH_LIMIT);
+		MAX_HEALTH = Algorithms.increment(MAX_HEALTH, Algorithms.getValInRange(20 + level, 0.8, 1.2), MAX_HEALTH, HEALTH_LIMIT);
 		if(level < 10){
 			STRENGTH = Algorithms.increment(STRENGTH, Algorithms.getValInRange(level, 0, 1), STRENGTH, STAT_LIMIT);
 			DEFENSE = Algorithms.increment(DEFENSE, Algorithms.getValInRange(level, 0, 1), DEFENSE, STAT_LIMIT);
@@ -512,6 +531,8 @@ public class Player extends LivingEntity
 			STRENGTH = Algorithms.increment(STRENGTH, Algorithms.getValInRange(5 + level/2, 0, 1), STRENGTH, STAT_LIMIT);
 			DEFENSE = Algorithms.increment(DEFENSE, Algorithms.getValInRange(5 + level/2, 0, 1), DEFENSE, STAT_LIMIT);
 		}
+		
+		health = getMaxHealth();
 		
 		this.levelUpAnim.reset();
 		this.levelUpAnim.start();
@@ -638,7 +659,7 @@ public class Player extends LivingEntity
 	
 	public void restorePlayerHealth()
 	{
-		health = MAX_HEALTH;
+		health = getMaxHealth();
 	}
 	
 	public void killed(){kills++;}
