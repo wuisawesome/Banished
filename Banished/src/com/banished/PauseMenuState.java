@@ -14,13 +14,19 @@ public class PauseMenuState extends State
 {
 	private Image background;
 	
-	Button resumeButton, quitButton;
+	Button resumeButton, helpButton, quitButton;
 	
 	private static class ResumeButtonCallback implements ButtonCallback
 	{
 		private PauseMenuState pauseMenu;
 		public ResumeButtonCallback(PauseMenuState pauseMenu) { this.pauseMenu = pauseMenu; }
 		public void onClicked(Button sender) { pauseMenu.resumeButtonPressed(); }
+	}
+	private static class HelpButtonCallback implements ButtonCallback
+	{
+		private PauseMenuState pauseMenu;
+		public HelpButtonCallback(PauseMenuState pauseMenu) { this.pauseMenu = pauseMenu; }
+		public void onClicked(Button sender) { pauseMenu.helpButtonPressed(); }
 	}
 	private static class QuitButtonCallback implements ButtonCallback
 	{
@@ -32,13 +38,15 @@ public class PauseMenuState extends State
 	public PauseMenuState()
 	{
 		background = Image.fromScreen();
-		resumeButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 - 75), false, new ResumeButtonCallback(this), "Resume");
-		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 75), false, new QuitButtonCallback(this), "Quit");
+		resumeButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 - 125), false, new ResumeButtonCallback(this), "Resume");
+		helpButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2), false, new HelpButtonCallback(this), "Instructions");
+		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 125), false, new QuitButtonCallback(this), "Quit");
 	}
 
 	public void Update(double frameTime)
 	{
 		resumeButton.update();
+		helpButton.update();
 		quitButton.update();
 		
 		if (Key.wasPressed(Key.Escape))
@@ -53,12 +61,17 @@ public class PauseMenuState extends State
 		Graphics.Applet.rect(0, 0, Banished.width(), Banished.height());
 		
 		resumeButton.render();
+		helpButton.render();
 		quitButton.render();
 	}
 	
 	public void resumeButtonPressed()
 	{
 		State.ExitState();
+	}
+	public void helpButtonPressed()
+	{
+		State.EnterState(new HelpState());
 	}
 	public void quitButtonPressed()
 	{

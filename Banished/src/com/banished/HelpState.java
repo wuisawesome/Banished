@@ -29,7 +29,7 @@ public class HelpState extends State
 
 	public HelpState()
 	{
-		backButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() - 150), false, new BackButtonCallback(this), "Back to Main Menu");
+		backButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() - 150), false, new BackButtonCallback(this), "Back to Menu");
 
 		final String helpFilePath = "gui/help_text.txt";
 		try 
