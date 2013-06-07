@@ -7,12 +7,12 @@ TODO LIST - things to add to the game before the deadline (this Friday!)
 TO DO:
 - Implement player attack animations
 - Player damage animations
-- Stats screen
+- Save files (Jashaszun)
+- Opening cutscene (actually play it)
 
 
 TO FIX:
 - Entitiy-entity collision (dunno if fixed already, looks like it's kinda okay)
-- Opening cutscene
 - Slime collision shape looks funky
 - Chest inventories (feralin)
 
@@ -21,9 +21,9 @@ IN PROGRESS:
 - More enemies (DarkSage)
 - Books (DarkSage)
 - Sounds and Music (DarkSage)
-- Save files (Jashaszun)
 - Final boss (DarkSage)
 - Add and implement items (armor, weapons, potions, etc) (Jashaszun)
+- Stats screen
 
 
 COMPLETED:
@@ -33,3 +33,4 @@ COMPLETED:
 - Player dash attack
 - Damage numbers
 - Instructions screen from main menu (and pause menu)
+- Sounds working from jar.

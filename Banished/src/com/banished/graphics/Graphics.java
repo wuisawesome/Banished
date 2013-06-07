@@ -3,7 +3,6 @@ package com.banished.graphics;
 import com.banished.core.Location;
 
 import processing.core.*;
-import processing.video.Movie;
 
 public class Graphics
 {
