@@ -15,9 +15,9 @@ public class SoundPlayer
 	{
 		sounds = new HashMap<Sound, AudioPlayer>();
 		
-		sounds.put(Sound.ShadowFace_Battle, Game.MinimAudio.loadFile("music/shadowface_battle.wav"));
-		sounds.put(Sound.Harp, Game.MinimAudio.loadFile("music/harp.wav"));
-		sounds.put(Sound.FinalBoss, Game.MinimAudio.loadFile("music/finalboss.wav"));
+		sounds.put(Sound.ShadowFace_Battle, Game.MinimAudio.loadFile("music/shadowface_battle.mp3"));
+		sounds.put(Sound.Harp, Game.MinimAudio.loadFile("music/harp.mp3"));
+		sounds.put(Sound.FinalBoss, Game.MinimAudio.loadFile("music/finalboss.mp3"));
 		sounds.put(Sound.Sword, Game.MinimAudio.loadFile("entities/player/swords/swordSound.wav"));
 		getPlayer(Sound.Sword).gain().setValue(-15);
 		sounds.put(Sound.ChestOpen, Game.MinimAudio.loadFile("entities/object_entities/chest/chestopen.wav"));
