@@ -13,8 +13,8 @@ TO DO:
 TO FIX:
 - Entitiy-entity collision (dunno if fixed already, looks like it's kinda okay)
 - Opening cutscene
-- Sound doesn't work on jars
 - Slime collision shape looks funky
+- Chest inventories (feralin)
 
 
 IN PROGRESS:
@@ -23,7 +23,6 @@ IN PROGRESS:
 - Sounds and Music (DarkSage)
 - Save files (Jashaszun)
 - Final boss (DarkSage)
-- Chest inventories (feralin)
 - Add and implement items (armor, weapons, potions, etc) (Jashaszun)
 
 
@@ -33,4 +32,4 @@ COMPLETED:
 - Player aoe attack
 - Player dash attack
 - Damage numbers
-- Instructions screen from main menu
+- Instructions screen from main menu (and pause menu)
