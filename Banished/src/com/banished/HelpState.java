@@ -15,7 +15,7 @@ public class HelpState extends State
 {
 	final int TEXT_LEFT = 10, 
 			  TEXT_TOP = 10,
-			  LINE_HEIGHT = 40;
+			  LINE_HEIGHT = 32;
 
 	Button backButton;
 	String[] helpText;
@@ -72,7 +72,7 @@ public class HelpState extends State
 
 		Graphics.Applet.noStroke();
 		Graphics.Applet.fill(255, 255, 100);
-		Graphics.Applet.textSize(40);
+		Graphics.Applet.textSize(30);
 		Graphics.Applet.textAlign(PConstants.LEFT, PConstants.TOP);
 		for (int i = 0; i < helpText.length; i++)
 			Graphics.Applet.text(helpText[i], TEXT_LEFT, TEXT_TOP + LINE_HEIGHT * i);

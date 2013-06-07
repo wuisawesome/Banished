@@ -12,9 +12,11 @@ Attacks:
      takes a medium amount of stamina.
 Enemies: Kill all of them!
 Inventory:
-     Press 'I' to toggle visibility.
-     Left click to pick up and drop items in slots,
-     Right click to equip/use items; equipped items will be highlighted green.
-Book: Press 'B' to toggle, 
-     every level a new page will be added for you to read!
-Press "esc" to pause the game.
+  I: to toggle visibility.
+  Left click: pick up and drop items in slots,
+  Right click: equip/use items
+Book:
+  B: open/close book,
+  E/R: turn pages
+  every level a new page will be added for you to read!
+Escape: pause the game.
