@@ -15,7 +15,7 @@ public class HelpState extends State
 {
 	final int TEXT_LEFT = 10, 
 			  TEXT_TOP = 10,
-			  LINE_HEIGHT = 50;
+			  LINE_HEIGHT = 40;
 
 	Button backButton;
 	String[] helpText;
