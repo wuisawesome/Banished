@@ -59,7 +59,8 @@ public class HUD {
 		Graphics.Applet.fill(255, 255, 255);
 		Graphics.Applet.text("Level: " + Player.get().getLevel(), 5, 25);
 		Graphics.Applet.cursor(Graphics.Applet.loadImage("gui/cursor.png"), 1, 0);
-		Graphics.Applet.text("Location" + Player.get().getLocation(), 10, Banished.height() - 65);
+		if (Banished.DEBUGGING)
+			Graphics.Applet.text("Location" + Player.get().getLocation(), 10, Banished.height() - 65);
 		String fpsString = Double.toString(Banished.getFrameRate());
 		if (fpsString.contains("."))
 			fpsString = fpsString.substring(0, Math.min(fpsString.length(), fpsString.indexOf('.') + 2));
