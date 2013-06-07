@@ -17,3 +17,4 @@ Inventory:
      Right click to equip/use items; equipped items will be highlighted green.
 Book: Press 'B' to toggle, 
      every level a new page will be added for you to read!
+Press "esc" to pause the game.

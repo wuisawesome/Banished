@@ -38,8 +38,8 @@ public class LevelTwo extends LevelState {
 		world.addEntity(Spawner.redSpawner(new Location(18.5,  5.5), world));
 		
 		Inventory inv = new Inventory();
-		inv.add(new Armor(Items.BronzeChest));
-		inv.add(new Armor(Items.BronzeLegs));
+		inv.add(new Armor(Items.IronChest));
+		inv.add(new Armor(Items.IronLegs));
 		world.addEntity(new ChestEntity(world, new Location(10.25, 2.25), inv));
 	}
 

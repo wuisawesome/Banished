@@ -174,7 +174,6 @@ public class Player extends LivingEntity
 		
 		this.attackSound();
 		this.resetTimeSinceAttack();
-		// TODO: test this
 		
 		//calcDamageSets();
 		

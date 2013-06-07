@@ -31,12 +31,12 @@ public class Game
 		Player.get().setPlayerInv(new Inventory());
 		Inventories.add(Player.get().getPlayerInv());
 		
-		Player.get().getPlayerInv().add(new Armor(Items.IronChest));
-		Player.get().getPlayerInv().add(new Armor(Items.IronLegs));
-		Player.get().getPlayerInv().add(new Armor(Items.IronShoes));
-		Player.get().getPlayerInv().add(new Armor(Items.IronGloves));
-		Player.get().getPlayerInv().add(new Potion(Items.HealthPotion, 10));
-		Player.get().getPlayerInv().add(new Potion(Items.StaminaPotion, 10));
+		Player.get().getPlayerInv().add(new Armor(Items.BronzeChest));
+		Player.get().getPlayerInv().add(new Armor(Items.BronzeLegs));
+		Player.get().getPlayerInv().add(new Armor(Items.BronzeShoes));
+		Player.get().getPlayerInv().add(new Armor(Items.BronzeGloves));
+		Player.get().getPlayerInv().add(new Potion(Items.HealthPotion, 5));
+		Player.get().getPlayerInv().add(new Potion(Items.StaminaPotion, 5));
 		
 		
 //		MinimAudio = new Minim(Banished.getApplet());
@@ -48,6 +48,9 @@ public class Game
 		levels.push(new LevelFinal(hud, p));
 		levels.push(new LevelToFinal(hud, p));
 		levels.push(new LevelPenultimate(hud, p));
+		levels.push(new LevelSeven(hud, p));
+		levels.push(new LevelSix(hud, p));
+		levels.push(new LevelFive(hud, p));
 		levels.push(new LevelFour(hud, p));
 		levels.push(new LevelThree(hud, p));
 		levels.push(new LevelTwo(hud, p));
