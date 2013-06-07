@@ -3,7 +3,7 @@ package com.banished.core;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
-import com.banished.Banished;
+import com.banished.Game;
 import com.banished.levels.LevelState;
 public abstract class State
 {
@@ -44,7 +44,7 @@ public abstract class State
 	
 	protected static void ExitApplication()
 	{
-		Banished.exitApp();
+		Game.exit();
 	}
 	
 	protected static boolean NoStates()

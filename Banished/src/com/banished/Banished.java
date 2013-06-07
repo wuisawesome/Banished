@@ -45,6 +45,8 @@ public class Banished extends PApplet
 	
 	public boolean sketchFullScreen() { return FULLSCREEN; }
 	
+	public static Banished getApplet() { return banished; }
+	
 	public void setup()
 	{
 		Graphics.Initialize(this);

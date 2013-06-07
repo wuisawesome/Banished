@@ -62,6 +62,6 @@ public class PauseMenuState extends State
 	}
 	public void quitButtonPressed()
 	{
-		Banished.exitApp();
+		Game.exit();
 	}
 }

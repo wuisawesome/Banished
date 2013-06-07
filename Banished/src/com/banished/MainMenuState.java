@@ -77,6 +77,6 @@ public class MainMenuState extends State
 	}
 	public void quitButtonPressed()
 	{
-		Banished.exitApp();
+		Game.exit();
 	}
 }
