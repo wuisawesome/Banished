@@ -7,7 +7,6 @@ TODO LIST - things to add to the game before the deadline (this Friday!)
 TO DO:
 - Implement player attack animations
 - Player damage animations
-- Instructions screen from main menu
 - Stats screen
 
 
@@ -34,3 +33,4 @@ COMPLETED:
 - Player aoe attack
 - Player dash attack
 - Damage numbers
+- Instructions screen from main menu
