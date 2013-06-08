@@ -1,0 +1,11 @@
+Credits:
+
+Made by Jacob Posner, Grant Posner, Brenton Chu, and Alex Wu
+
+Music/Images mostly made by: Brenton Chu
+
+Framework mostly made by: Jacob Posner
+
+Levels made by: Brenton Chu and Alex Wu
+
+Inventory made by: Grant Posner

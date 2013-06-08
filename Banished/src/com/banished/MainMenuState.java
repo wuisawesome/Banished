@@ -99,6 +99,6 @@ public class MainMenuState extends State
 	}
 	public void creditsButtonPressed()
 	{
-		
+		State.EnterState(new CreditsState());
 	}
 }

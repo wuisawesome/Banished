@@ -1,6 +1,7 @@
 package com.banished;
 
 import processing.core.PConstants;
+
 import com.banished.core.Coordinate;
 import com.banished.core.Location;
 import com.banished.core.State;
@@ -11,7 +12,7 @@ import com.banished.gui.Button;
 import com.banished.gui.Button.ButtonCallback;
 import com.banished.input.Key;
 
-public class HelpState extends State 
+public class CreditsState extends State
 {
 	final int TEXT_LEFT = 10, 
 			  TEXT_TOP = 10,
@@ -19,25 +20,25 @@ public class HelpState extends State
 			  FONT_SIZE = 24;
 
 	Button backButton;
-	String[] helpText;
+	String[] creditsText;
 
 	private static class BackButtonCallback implements ButtonCallback
 	{
-		private HelpState help;
-		public BackButtonCallback(HelpState help) { this.help = help; }
-		public void onClicked(Button sender) { help.backButtonPressed(); }
+		private CreditsState credits;
+		public BackButtonCallback(CreditsState credits) { this.credits = credits; }
+		public void onClicked(Button sender) { credits.backButtonPressed(); }
 	}
 
-	public HelpState()
+	public CreditsState()
 	{
 		backButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() - 150), false, new BackButtonCallback(this), "Back to Menu");
 
-		final String helpFilePath = "gui/help_text.txt";
-		helpText = Graphics.Applet.loadStrings(helpFilePath);
-		if (helpText == null)
+		final String creditsFilePath = "gui/credits_text.txt";
+		creditsText = Graphics.Applet.loadStrings(creditsFilePath);
+		if (creditsText == null)
 		{
-			System.err.println("The file " + helpFilePath + " could not be found.");
-			helpText = new String[] { "Whoops! The help text file could not be found... :(" };
+			System.err.println("The file " + creditsFilePath + " could not be found.");
+			creditsText = new String[] { "Whoops! The credits text file could not be found... :(" };
 		}
 	}
 
@@ -72,8 +73,8 @@ public class HelpState extends State
 		Graphics.Applet.fill(255, 255, 100);
 		Graphics.Applet.textSize(FONT_SIZE);
 		Graphics.Applet.textAlign(PConstants.LEFT, PConstants.TOP);
-		for (int i = 0; i < helpText.length; i++)
-			Graphics.Applet.text(helpText[i], TEXT_LEFT, TEXT_TOP + LINE_HEIGHT * i);
+		for (int i = 0; i < creditsText.length; i++)
+			Graphics.Applet.text(creditsText[i], TEXT_LEFT, TEXT_TOP + LINE_HEIGHT * i);
 		Graphics.Applet.textSize(14);
 
 		backButton.render();
