@@ -79,6 +79,7 @@ public abstract class LevelState extends State {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	public void Update(double frameTime)
 	{
 		world.update(frameTime);

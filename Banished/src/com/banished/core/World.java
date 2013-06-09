@@ -129,6 +129,9 @@ public class World
 					((LivingEntity)entity).renderEdges();
 			}
 			
+			if (Player.get().showAOEAnim())
+				Graphics.DrawImage(Player.get().getAOEAnimImage(), Player.get().getAOEImageLoc());
+			
 			if (entity instanceof SpawnerEntity)
 			{
 				Graphics.DrawImage(entity.getImage(),

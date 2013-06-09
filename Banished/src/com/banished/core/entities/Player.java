@@ -58,7 +58,9 @@ public class Player extends LivingEntity
 	
 	private Inventory inv;
 	
-	private Animation levelUpAnim;
+	private Animation levelUpAnim, aoeAnim;
+	
+	private int AOE_FRAME = 4;
 	
 	private static Player singleton;
 	public static Player get()
@@ -115,7 +117,12 @@ public class Player extends LivingEntity
 		Image[] levelUpFrames = new Image[LEVEL_UP_FRAMES];
 		for (int i = 0; i < LEVEL_UP_FRAMES; i++)
 			levelUpFrames[i] = Image.fromFile("effects/levelup/levelup" + i + ".png");
-		this.levelUpAnim = new Animation(levelUpFrames, .5, false);
+		this.levelUpAnim = new Animation(levelUpFrames, .02, false);
+		final int AOE_FRAMES = 7;
+		Image[] aoeFrames = new Image[AOE_FRAMES];
+		for (int i = 0; i < AOE_FRAMES; i++)
+			aoeFrames[i] = Image.fromFile("effects/aoe/aoe" + i + ".png");
+		this.aoeAnim = new Animation(aoeFrames, .05, false);
 		
 		moving = false;
 		
@@ -439,6 +446,7 @@ public class Player extends LivingEntity
 		return this.move(movement);
 	}
 
+	@SuppressWarnings("unused")
 	public void update(double frameTime)
 	{
 		super.update(frameTime);
@@ -458,6 +466,10 @@ public class Player extends LivingEntity
 			this.move(tiles);
 		}
 		
+		
+		this.levelUpAnim.update(frameTime);
+		this.aoeAnim.update(frameTime);
+		
 		if (Key.wasPressed(Key.Q)){
 			String message = "";
 			message += "STATS: \n";
@@ -476,10 +488,17 @@ public class Player extends LivingEntity
 		
 		if (Key.wasPressed(Key.S) && this.canAttack())
 			this.attack();
-		else if (Key.wasPressed(Key.A) && this.canAttack())
-			this.aoe();
+		else if (Key.wasPressed(Key.A) && this.canAttack()){
+			if(stamina >= AOE_STAM_RED){
+				this.aoeAnim.reset();
+				this.aoeAnim.start();
+			}
+		}
 		else if (Key.wasPressed(Key.D) && this.canAttack())
 			this.dash();
+		
+		if(aoeAnim.getFrame() == AOE_FRAME)
+			this.aoe();
 		
 //		if (Key.wasPressed(Key.Space))
 //			this.getWorld().startInteracting();
@@ -505,8 +524,6 @@ public class Player extends LivingEntity
 			this.shoes.getImages().update(frameTime);
 		if (this.gloves != null)
 			this.gloves.getImages().update(frameTime);
-		
-		this.levelUpAnim.update(frameTime);
 		
 		this.getWorld().getTiles().updateVisibility();
 	}
@@ -637,6 +654,13 @@ public class Player extends LivingEntity
 	public boolean showLevelUpAnim() { return this.levelUpAnim.isRunning(); }
 	public Image getLevelUpAnimImage() { return this.levelUpAnim.getImage(); }
 	
+	public boolean showAOEAnim() { return this.aoeAnim.isRunning(); }
+	public Image getAOEAnimImage() { return this.aoeAnim.getImage(); }
+	
+	public Location getAOEImageLoc() { return new Location(getLocation().sub(Player.get().getImageOffset()).mult(Tile.SIZE).getX() - AOE_RADIUS* Tile.SIZE, 
+			getLocation().sub(Player.get().getImageOffset()).mult(Tile.SIZE).getY() - AOE_RADIUS* Tile.SIZE);
+	}
+	
 	public String toText()
 	{
 		return super.toText() + " stamina=" + stamina + " level=" + level + " experience=" + experience;
@@ -660,6 +684,11 @@ public class Player extends LivingEntity
 	public void restorePlayerHealth()
 	{
 		health = getMaxHealth();
+	}
+	
+	public void restorePlayerStamina()
+	{
+		stamina = MAX_STAMINA;
 	}
 	
 	public void killed(){kills++;}

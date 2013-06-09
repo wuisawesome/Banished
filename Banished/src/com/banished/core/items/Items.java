@@ -230,8 +230,8 @@ public class Items
 		}),
 		1, 0);
 		
-		HealthPotion = makePotion(8, 10, "items/potion/healthpotion.png", Potion.PotionType.Health);
-		StaminaPotion = makePotion(9, 10, "items/potion/staminapotion.png", Potion.PotionType.Stamina);
+		HealthPotion = makePotion(8, 50, "items/potion/healthpotion.png", Potion.PotionType.Health);
+		StaminaPotion = makePotion(9, 50, "items/potion/staminapotion.png", Potion.PotionType.Stamina);
 	}
 	
 	private static Armor makeArmor(int type, String name, String imageName, Armor.ArmorType armorType, EntityImageSet images, double defense, double health)

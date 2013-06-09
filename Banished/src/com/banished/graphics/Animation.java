@@ -29,7 +29,7 @@ public class Animation
 	
 	public Image[] getImages() { return this.images; }
 	public Image getImage(int frame) { return this.images[frame]; }
-	
+	public int getFrame() { return frame; }
 	public Image getImage() { return this.images[this.frame]; }
 	
 	public void start()
@@ -69,6 +69,7 @@ public class Animation
 			if (!this.repeat && this.frame == this.getNumImages() - 1)
 				this.pause();
 			this.frame = (this.frame + 1) % this.getNumImages();
+			this.time = 0;
 		}
 	}
 	

@@ -42,6 +42,7 @@ public class GameOverState extends State
 		mainMenuButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 20), false, new MainMenuButtonCallback(this), "Main Menu");
 		quitButton = new Button(new Coordinate(Banished.width() / 2, Banished.height() / 2 + 140), false, new QuitButtonCallback(this), "Quit");
 		Player.get().restorePlayerHealth();
+		Player.get().restorePlayerStamina();
 	}
 	
 	public void mainMenuButtonPressed() 
