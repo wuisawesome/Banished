@@ -29,7 +29,7 @@ public class Player extends LivingEntity
 	
 	private static final double FIST_HITBOX_WIDTH = .5,
 								FIST_HITBOX_HEIGHT = .5,
-								AOE_RADIUS = 3,
+								AOE_RADIUS = 5,
 								DASH_DIST = 3.5;
 	private static final double FIST_DAMAGE = 5,
 								FIST_STABILITY = 0.5,
@@ -657,8 +657,12 @@ public class Player extends LivingEntity
 	public boolean showAOEAnim() { return this.aoeAnim.isRunning(); }
 	public Image getAOEAnimImage() { return this.aoeAnim.getImage(); }
 	
-	public Location getAOEImageLoc() { return new Location(getLocation().sub(Player.get().getImageOffset()).mult(Tile.SIZE).getX() - AOE_RADIUS* Tile.SIZE, 
-			getLocation().sub(Player.get().getImageOffset()).mult(Tile.SIZE).getY() - AOE_RADIUS* Tile.SIZE);
+	public Location getAOEImageLoc()
+	{
+		return getLocation().sub(getImageOffset()).mult(Tile.SIZE).sub(aoeAnim.getImage().getSize().div(2));
+//		return new Location(
+//			getLocation().sub(Player.get().getImageOffset()).mult(Tile.SIZE).getX() - AOE_RADIUS* Tile.SIZE, 
+//			getLocation().sub(Player.get().getImageOffset()).mult(Tile.SIZE).getY() - AOE_RADIUS* Tile.SIZE);
 	}
 	
 	public String toText()

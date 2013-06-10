@@ -1,5 +1,7 @@
 package com.banished.graphics;
 
+import com.banished.core.Location;
+
 import processing.core.*;
 
 public class Image
@@ -40,6 +42,11 @@ public class Image
 	public int getHeight()
 	{
 		return this.image.height;
+	}
+	
+	public Location getSize()
+	{
+		return new Location(getWidth(), getHeight());
 	}
 	
 	public Image flipHorizontal()
