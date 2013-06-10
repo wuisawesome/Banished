@@ -6,6 +6,8 @@ Music/Images mostly made by: Brenton Chu
 
 Framework mostly made by: Jacob Posner
 
+Combat and Stats made by: Brenton Chu
+
 Levels made by: Brenton Chu and Alex Wu
 
-Inventory made by: Grant Posner
+Inventory and Item Interaction made by: Grant Posner
