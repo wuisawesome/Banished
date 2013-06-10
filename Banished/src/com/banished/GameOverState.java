@@ -54,6 +54,10 @@ public class GameOverState extends State
 		}
 		if(State.NoStates())
 			State.ExitApplication();
+		if(SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).isLooping())
+			SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).pause();
+		if(SoundPlayer.getPlayer(SoundPlayer.Sound.ShadowFace_Battle).isLooping())
+			SoundPlayer.getPlayer(SoundPlayer.Sound.ShadowFace_Battle).pause();
 	}
 
 	public void quitButtonPressed() 

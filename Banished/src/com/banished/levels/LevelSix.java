@@ -7,6 +7,7 @@ import com.banished.core.Spawner;
 import com.banished.core.entities.Player;
 import com.banished.core.entities.nonliving.ChestEntity;
 import com.banished.core.entities.nonliving.PortalForwardEntity;
+import com.banished.core.items.Armor;
 import com.banished.core.items.Inventory;
 import com.banished.core.items.Items;
 import com.banished.core.items.Potion;
@@ -37,8 +38,9 @@ public class LevelSix extends LevelState {
 		world.addEntity(Spawner.shadow(new Location(9.5, 3), world));
 		
 		Inventory inv = new Inventory();
+		inv.add(new Armor(Items.EnchantedChest));
 		inv.add(new Potion(Items.HealthPotion, 40));
 		inv.add(new Potion(Items.StaminaPotion, 10));
-		world.addEntity(new ChestEntity(world, new Location(9.5, 14.5), inv));
+		world.addEntity(new ChestEntity(world, new Location(9.25, 14.25), inv));
 	}
 }

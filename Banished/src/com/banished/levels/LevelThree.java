@@ -10,7 +10,9 @@ import com.banished.core.entities.Entity;
 import com.banished.core.entities.Player;
 import com.banished.core.entities.nonliving.ChestEntity;
 import com.banished.core.entities.nonliving.PortalForwardEntity;
+import com.banished.core.items.Armor;
 import com.banished.core.items.Inventory;
+import com.banished.core.items.Items;
 
 public class LevelThree extends LevelState {
 	
@@ -32,8 +34,11 @@ public class LevelThree extends LevelState {
 		a.add(Spawner.blueSpawner(new Location(14.5, 15.5), world));
 		a.add(Spawner.redSpawner(new Location(20.5, 10.5), world));
 		world.getTiles().getTile(15, 9).setTriggerEntity(world, a);
+		Inventory inv = new Inventory();
+		inv.add(new Armor(Items.EnchantedGloves));
+		inv.add(new Armor(Items.EnchantedShoes));
 		a = new ArrayList<Entity>();
-		a.add(new ChestEntity(world, new Location(20.25, 15.25), new Inventory()));
+		a.add(new ChestEntity(world, new Location(20.25, 15.25), inv));
 		world.getTiles().getTile(4, 1).setTriggerEntity(world, a);
 	}
 

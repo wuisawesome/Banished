@@ -34,7 +34,7 @@ public class CursedManEntity extends EnemyEntity {
 		
 		images = new EntityImageSet(new Image[]
 				{
-				Image.fromFile("entities/living_entities/zombie/zombie/plleft.png"),
+				Image.fromFile("entities/living_entities/zombie/plleft.png"),
 				Image.fromFile("entities/living_entities/zombie/plleft1.png"),
 				Image.fromFile("entities/living_entities/zombie/plleft2.png")
 		},

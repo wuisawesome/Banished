@@ -24,8 +24,11 @@ public class Game
 		Player p = new Player(new Location(0, 0), null, 100);
 		HUD hud = new HUD();
 		
+		MinimAudio = new Minim(Banished.getApplet());
+		SoundPlayer.loadSounds();
+		
 		fillLevels(hud, p);
-
+		
 		State.EnterState(new MainMenuState());
 
 		Player.get().setPlayerInv(new Inventory());
@@ -37,11 +40,7 @@ public class Game
 		Player.get().getPlayerInv().add(new Armor(Items.BronzeGloves));
 		Player.get().getPlayerInv().add(new Potion(Items.HealthPotion, 5));
 		Player.get().getPlayerInv().add(new Potion(Items.StaminaPotion, 5));
-		
-		
-		MinimAudio = new Minim(Banished.getApplet());
-		SoundPlayer.loadSounds();
-		loopMusic();
+		Player.get().getPlayerInv().add(new Weapon(Items.BronzeSword));
 	}
 	
 	private static void fillLevels(HUD hud, Player p){
@@ -60,11 +59,6 @@ public class Game
 	public static Stack<LevelState> getLevels()
 	{
 		return levels;
-	}
-	
-	private static void loopMusic()
-	{
-		SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).loop();
 	}
 	
 	public static void exit()

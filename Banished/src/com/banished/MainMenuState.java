@@ -87,6 +87,7 @@ public class MainMenuState extends State
 	
 	public void playButtonPressed()
 	{
+		SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).loop();
 		State.EnterState(Game.getLevels().pop());
 	}
 	public void helpButtonPressed()

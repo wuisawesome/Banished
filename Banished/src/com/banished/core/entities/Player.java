@@ -366,14 +366,14 @@ public class Player extends LivingEntity
 		if (weapon == null)
 		{
 			STABILITY = FIST_STABILITY;
-			MAX_DAMAGE = FIST_DAMAGE * Math.sqrt(STRENGTH);
+			MAX_DAMAGE = FIST_DAMAGE * (1 + Math.sqrt(STRENGTH)/3);
 			CRIT_RATE = BASE_CRIT_RATE;
 			CRIT_MULT = BASE_CRIT_MULT;
 		}
 		else
 		{
 			STABILITY = weapon.STABILITY;
-			MAX_DAMAGE = weapon.MAX_DAMAGE * Math.sqrt(STRENGTH);
+			MAX_DAMAGE = weapon.MAX_DAMAGE * (1 + Math.sqrt(STRENGTH)/3);
 		}
 	}
 	

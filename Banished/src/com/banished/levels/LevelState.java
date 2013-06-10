@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.banished.Banished;
 import com.banished.Game;
 import com.banished.PauseMenuState;
+import com.banished.SoundPlayer;
 import com.banished.core.Book;
 import com.banished.core.Direction;
 import com.banished.core.HUD;
@@ -76,7 +77,10 @@ public abstract class LevelState extends State {
 			Book.addPage(page);
 			pageAdded = true;
 		}
-		
+		if(this instanceof LevelPenultimate){
+			SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).pause();
+			SoundPlayer.getPlayer(SoundPlayer.Sound.ShadowFace_Battle).loop();
+		}
 	}
 	
 	@SuppressWarnings("unused")
