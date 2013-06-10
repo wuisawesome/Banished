@@ -9,12 +9,13 @@ TO DO:
 - Player damage animations
 - Save files (Jashaszun)
 - Opening cutscene (actually play it)
-
+- Item text in inventory
 
 TO FIX:
 - Entitiy-entity collision (dunno if fixed already, looks like it's kinda okay)
 - Slime collision shape looks funky
 - Chest inventories (feralin)
+- Should only be able to equip items that are in the player's inventory.
 
 
 IN PROGRESS:

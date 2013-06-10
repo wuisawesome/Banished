@@ -1,6 +1,7 @@
 Banished:
 
 Movement: move with the arrow keys.
+Interaction: press Space to open/close chests.
 Attacks:
   A: area of effect; 
      a lot of damage in a medium-sized area;
