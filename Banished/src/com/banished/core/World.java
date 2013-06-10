@@ -212,16 +212,16 @@ public class World
 			if (entity == Player.get()) continue;
 			if (getPlayer().getLocation().squareDistanceTo(entity.getLocation()) <= radius * radius)
 			{
-				Direction playerDir = getPlayer().getDirection();
-				if (playerDir == Direction.Southwest || playerDir == Direction.Northwest) playerDir = Direction.West;
-				else if (playerDir == Direction.Southeast || playerDir == Direction.Northeast) playerDir = Direction.East;
-				
-				Direction entityDir = Direction.fromVector(getPlayer().getLocation().sub(entity.getLocation()));
-				entityDir = entityDir.opposite();
-				if (entityDir == Direction.Southwest || entityDir == Direction.Northwest) entityDir = Direction.West;
-				else if (entityDir == Direction.Southeast || entityDir == Direction.Northeast) entityDir = Direction.East;
-				
-				if (entityDir == playerDir)
+//				Direction playerDir = getPlayer().getDirection();
+//				if (playerDir == Direction.Southwest || playerDir == Direction.Northwest) playerDir = Direction.West;
+//				else if (playerDir == Direction.Southeast || playerDir == Direction.Northeast) playerDir = Direction.East;
+//				
+//				Direction entityDir = Direction.fromVector(getPlayer().getLocation().sub(entity.getLocation()));
+//				entityDir = entityDir.opposite();
+//				if (entityDir == Direction.Southwest || entityDir == Direction.Northwest) entityDir = Direction.West;
+//				else if (entityDir == Direction.Southeast || entityDir == Direction.Northeast) entityDir = Direction.East;
+//				
+//				if (entityDir == playerDir)
 					entities.add(entity);
 			}
 		}
