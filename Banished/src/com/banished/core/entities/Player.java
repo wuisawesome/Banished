@@ -449,6 +449,12 @@ public class Player extends LivingEntity
 	@SuppressWarnings("unused")
 	public void update(double frameTime)
 	{
+		if (this != singleton)
+		{
+			singleton.update(frameTime);
+			return;
+		}
+		
 		super.update(frameTime);
 		
 		if (Banished.DEBUGGING && Key.isDown(Key.F5))
@@ -479,11 +485,6 @@ public class Player extends LivingEntity
 				    JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE);
 		}
 		
-		if (this != singleton)
-		{
-			singleton.update(frameTime);
-			return;
-		}
 		this.move(frameTime);
 		
 		if (Key.wasPressed(Key.S) && this.canAttack())
