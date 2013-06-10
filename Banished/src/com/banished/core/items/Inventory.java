@@ -170,6 +170,10 @@ public class Inventory implements IInventory
 		}
 		else if (button == MouseButton.Right)
 		{
+			// cannot use/equip any item that is not in the player's inventory.
+			if (this != Player.get().getPlayerInv())
+				return null;
+			
 			Item stack = this.items[y][x];
 			if (stack == null) return null;
 			

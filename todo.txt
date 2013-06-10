@@ -3,7 +3,6 @@ TODO LIST - things to add to the game before the deadline (this Friday!)
 	Move from TO DO or TO FIX and into IN PROGRESS when working on a particular feature, along with your name. Move to COMPLETED when finished.
 
 
-
 TO DO:
 - Implement player attack animations
 - Player damage animations
@@ -15,7 +14,6 @@ TO FIX:
 - Entitiy-entity collision (dunno if fixed already, looks like it's kinda okay)
 - Slime collision shape looks funky
 - Chest inventories (feralin)
-- Should only be able to equip items that are in the player's inventory.
 
 
 IN PROGRESS:
