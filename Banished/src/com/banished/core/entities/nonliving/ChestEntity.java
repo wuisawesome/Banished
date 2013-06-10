@@ -43,6 +43,12 @@ public class ChestEntity extends Entity
 			this.image = Image.fromFile("entities/object_entities/chest/Chest2.png");
 		}
 		else this.image = Image.fromFile("entities/object_entities/chest/Chest0.png");
+		
+		if (Player.get().getLocation().distanceTo(getLocation()) > Player.INTERACTION_RANGE)
+		{
+			closed = true;
+			inv.setShown(false);
+		}
 	}
 	
 	public Image getImage()
