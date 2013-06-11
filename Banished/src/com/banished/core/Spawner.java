@@ -69,5 +69,10 @@ public class Spawner {
 	{
 		return new ShadowEyeEntity(loc, world);
 	}
+	
+	public static BanishedEntity finalBoss(Location loc, World world)
+	{
+		return new BanishedEntity(loc, world);
+	}
 
 }

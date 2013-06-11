@@ -81,6 +81,14 @@ public abstract class LevelState extends State {
 			SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).pause();
 			SoundPlayer.getPlayer(SoundPlayer.Sound.ShadowFace_Battle).loop();
 		}
+		if(this instanceof LevelToFinal){
+			SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).pause();
+			SoundPlayer.getPlayer(SoundPlayer.Sound.ShadowFace_Battle).pause();
+		}
+		if(this instanceof LevelFinal){
+			SoundPlayer.getPlayer(SoundPlayer.Sound.Harp).pause();
+			SoundPlayer.getPlayer(SoundPlayer.Sound.FinalBoss).loop();
+		}
 	}
 	
 	@SuppressWarnings("unused")

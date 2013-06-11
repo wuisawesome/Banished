@@ -19,7 +19,7 @@ public class ShadowEyeEntity extends EnemyEntity
 	private static final double SHADOWEYE_DEFENSE = 45;
 	private static final double SHADOWEYE_SPEED = 0;
 	private static final double SHADOWEYE_SIGHT_RANGE = 7;
-	private static final double SHADOWEYE_TIME_TO_ATTACK = 20;
+	private static final double SHADOWEYE_TIME_TO_ATTACK = 10;
 	private static final double SHADOWEYE_STABILITY = 0;
 	private static final double SHADOWEYE_CRIT_RATE = 0;
 	private static final double SHADOWEYE_CRIT_MULT = 0;

@@ -15,11 +15,11 @@ import com.banished.levels.LevelState;
 public class ShadowFaceEntity extends EnemyEntity
 {
 	private static final double SHADOWFACE_MAX_HEALTH = 10000;
-	private static final double SHADOWFACE_RANGE = 6;
+	private static final double SHADOWFACE_RANGE = 6.5;
 	private static final double SHADOWFACE_STRENGTH = 100;
 	private static final double SHADOWFACE_DEFENSE = 60;
 	private static final double SHADOWFACE_SPEED = 0;
-	private static final double SHADOWFACE_SIGHT_RANGE = 6;
+	private static final double SHADOWFACE_SIGHT_RANGE = 6.5;
 	private static final double SHADOWFACE_TIME_TO_ATTACK = 3;
 	private static final double SHADOWFACE_STABILITY = .9;
 	private static final double SHADOWFACE_CRIT_RATE = .25;
